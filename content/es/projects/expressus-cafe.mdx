@@ -1,0 +1,23 @@
+export const meta = {
+  title: "Expressus Café",
+  summary: "Una tienda en línea con pago por Stripe y cotización de envíos, en producción y recibiendo pedidos.",
+};
+
+## Problema
+
+Hasta una tienda en línea pequeña tiene que resolver bien lo difícil: totales que coincidan con lo que se cobra, inventario que no se pueda sobrevender y el costo de envío antes de pagar.
+
+## Mi rol
+
+Soy el desarrollador principal de Expressus Café, un proyecto de DeepSpace.
+
+## Enfoque
+
+- **Tienda** hecha con Next.js.
+- **Integridad del checkout.** Los totales y los cambios de inventario corren dentro de funciones transaccionales de la base de datos, así que un pedido se completa entero o no se completa.
+- **Carritos sin cuenta.** Puedes comprar sin registrarte; el carrito vive en una cookie HTTP-only.
+- **Pagos y envíos.** Stripe Checkout con webhooks firmados y cotizaciones de envío de Skydropx.
+
+## Resultado
+
+En producción en [expressus.shop](https://www.expressus.shop/) y recibiendo pedidos.

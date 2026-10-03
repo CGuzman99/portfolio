@@ -50,3 +50,6 @@ next-env.d.ts
 
 # claude code local overrides
 .claude/settings.local.json
+
+# Playwright MCP screenshots and logs
+/.playwright-mcp/

@@ -14,7 +14,7 @@ All 17 planning items are decided; the table is the source for `docs/decisions.m
 | # | Item | Decision |
 | --- | --- | --- |
 | 1 | Positioning | Software Engineer, full-stack plus AI; remote full-time and contract roles, US, Mexico and elsewhere; no seniority level stated |
-| 2 | Brand | Personal name only; "Available for contract work" block with no prices; Upwork Top Rated and 100% JSS shown; no testimonials; DeepSpace only in About and the F1 case study |
+| 2 | Brand | Personal name only; "Available for contract work" block with no prices; Upwork Top Rated and 100% JSS shown; no testimonials; DeepSpace named in About and in the Fibrant, F1 Forecast Lab and Expressus Café case studies (changed by Carlos in M3: all three are DeepSpace projects) |
 | 3 | Name and domain | Display name Carlos Guzman; domain and email deferred; site URL read from `NEXT_PUBLIC_SITE_URL` |
 | 4 | Lineup | Fibrant, VDC Plugins for Revit, F1 Forecast Lab (featured on Home), then Expressus Café, Forge Clash Insight; UtahBIM named and linked |
 | 5 | Case-study facts | Confirmed per project in the Case studies section; unknown outcomes stay as `[PLACEHOLDER]` |

@@ -1,0 +1,23 @@
+export const meta = {
+  title: "F1 Forecast Lab",
+  summary: "An ML pipeline that forecasts Formula 1 qualifying and race results, with a dashboard that compares predictions to what happened.",
+};
+
+## Problem
+
+A forecasting model that sees data from after the event looks brilliant in testing and fails on race day. F1 Forecast Lab is a pipeline built to test its predictions honestly.
+
+## My role
+
+I was the main developer of F1 Forecast Lab, a DeepSpace project.
+
+## Approach
+
+- **Data.** A Python monorepo managed with `uv` ingests session data with FastF1, with leakage checks that keep future information out of training.
+- **Models.** Logistic regression, LightGBM and XGBoost, with calibration, compared on backtests at both event and season level.
+- **Operations.** The `f1-weekend` operator CLI drives each run, and results sync to Supabase.
+- **Dashboard.** A Next.js dashboard shows predicted against actual results.
+
+## Outcome
+
+Live, with the qualifying and race models done. [PLACEHOLDER: backtest metrics from `f1_model_runs`]

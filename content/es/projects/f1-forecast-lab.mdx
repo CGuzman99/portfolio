@@ -1,0 +1,23 @@
+export const meta = {
+  title: "F1 Forecast Lab",
+  summary: "Un pipeline de machine learning que pronostica la clasificación y la carrera de la Fórmula 1, con un dashboard que compara lo pronosticado con lo que pasó.",
+};
+
+## Problema
+
+Un modelo de pronóstico que ve datos posteriores al evento se luce en las pruebas y falla el día de la carrera. F1 Forecast Lab es un pipeline hecho para evaluar sus pronósticos con honestidad.
+
+## Mi rol
+
+Fui el desarrollador principal de F1 Forecast Lab, un proyecto de DeepSpace.
+
+## Enfoque
+
+- **Datos.** Un monorepo de Python administrado con `uv` ingiere datos de cada sesión con FastF1, con validaciones de leakage que mantienen la información futura fuera del entrenamiento.
+- **Modelos.** Regresión logística, LightGBM y XGBoost, con calibración, comparados en backtests por evento y por temporada.
+- **Operación.** El CLI `f1-weekend` dirige cada corrida y los resultados se sincronizan con Supabase.
+- **Dashboard.** Un dashboard en Next.js muestra lo pronosticado frente a los resultados reales.
+
+## Resultado
+
+En producción, con los modelos de clasificación y carrera terminados. [PLACEHOLDER: métricas de backtest de `f1_model_runs`]

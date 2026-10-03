@@ -29,7 +29,7 @@ Six routes, each at one URL in both languages; the header carries the EN / ES to
 | Route | Content |
 | --- | --- |
 | `/` | Headline and supporting line; numbered index 01 Fibrant, 02 VDC Plugins, 03 F1 Forecast (one-line summary and stack each); contract block; contact call to action |
-| `/projects` | All five case studies in order, with tags (AI, Construction tech, E-commerce, ML/Data) |
+| `/projects` | All five case studies in order, with tags (AI, Construction tech, E-commerce, ML/Data, Finance) |
 | `/projects/[slug]` | Case-study template: sticky metadata column (role, timeframe, stack, client, links); hero visual; Problem, My role, Approach, Outcome; "Code walkthrough available on request"; next project |
 | `/about` | Photo, bio, location line, skills by group, experience, education, languages, credentials, CV downloads (EN and ES) |
 | `/contact` | Form (name, email, company, reason, message) and links to GitHub, LinkedIn, Upwork |
@@ -48,8 +48,8 @@ Six routes, each at one URL in both languages; the header carries the EN / ES to
 | Role | Dates |
 | --- | --- |
 | Software Engineer (contract via Upwork) · UtahBIM | Aug 2025 – present |
-| Founder and developer · Fibrant | 2026 – present |
-| Founder and developer · Expressus Café | 2025 – present |
+| Main developer · Fibrant (DeepSpace project) | 2026 – present |
+| Main developer · Expressus Café (DeepSpace project) | 2025 – present |
 | Freelance software developer · Upwork (Top Rated, 100% JSS) | 2024 – present |
 | Freelance developer · Fiverr (small Prolog projects) | 2024 – 2025 |
 
@@ -65,18 +65,34 @@ Five case studies, in this order; these rows seed `content/projects.ts` and `doc
 
 | # | Project | Timeframe | Role and team | Outcome | Links |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Fibrant | Mar 2026 – present | Solo | Launched | [fibrant.app](https://www.fibrant.app) |
+| 1 | Fibrant | Mar 2026 – present | Main developer (DeepSpace project) | Launched | [fibrant.app](https://www.fibrant.app) |
 | 2 | VDC Plugins for Revit | Feb 2026 – present | Lead developer of the add-in suite; contributor to UtahBIM's subscription app and storefront | Commercial product | [vdcplugins.com](https://vdcplugins.com/), [UtahBIM](https://www.utahbim.com/) |
-| 3 | F1 Forecast Lab | May – Jun 2026 | Built by Carlos; Luis (DeepSpace) supervised and gave feedback | Live; qualifying and race models done | [deepspace.com.mx](https://www.deepspace.com.mx/) |
-| 4 | Expressus Café | Jul 2025 – present | Solo | Live, taking orders | [expressus.shop](https://www.expressus.shop/) |
-| 5 | Forge Clash Insight | Aug 2025 – Mar 2026 | Main developer; Luis contributed | Prototype for UtahBIM | [UtahBIM](https://www.utahbim.com/) |
+| 3 | F1 Forecast Lab | May – Jun 2026 | Main developer (DeepSpace project) | Live; qualifying and race models done | [deepspace.com.mx](https://www.deepspace.com.mx/) |
+| 4 | Expressus Café | Jul 2025 – present | Main developer (DeepSpace project) | Live, taking orders | [expressus.shop](https://www.expressus.shop/) |
+| 5 | Forge Clash Insight | Aug 2025 – Mar 2026 | Main developer | Prototype for UtahBIM | [UtahBIM](https://www.utahbim.com/) |
 
 **Approach highlights and visuals**
 
 1. **Fibrant.** Multi-model AI analyst (Claude, ChatGPT, Gemini with a model selector), tool use, per-portfolio memory, a cache-friendly static system prompt, credits by tier; time-weighted returns and XIRR with `decimal.js`, USD/MXN conversion; Supabase row-level security with shared portfolios. Visuals: demo-account screenshots, analyst tool-use diagram.
+   Role scope (confirmed by Carlos in M3): the database and its access rules, the AI analyst and the interface.
+   Stack (confirmed by Carlos in M3, checked against the Fibrant repo's `package.json` and imports): Next.js, React, TypeScript, Supabase, Stripe, Anthropic API, OpenAI API, Gemini API, decimal.js, TanStack Query, Recharts, Tailwind CSS, shadcn/ui, next-intl, Vitest.
 2. **VDC Plugins for Revit.** About 10 C#/.NET 8 add-ins for Revit 2025 and 2026; a shared per-tool licensing gate that blocks unless access is confirmed; tools from another developer brought onto the shared structure and gate, with fixes; Dynamo and Python logic ported to C#; IPC Table 704.1 slope rules with documented tolerance; one Inno Setup installer. Web side: plugin slug registry, Stripe organisation and personal subscriptions, webhook lifecycle by subscription ID, closed access leaks; storefront free-trial flow, installer downloads, Docker/Prisma deploy. Visuals: system diagram (add-in, gate, slug registry, Stripe), storefront screenshot, gate excerpt.
+   Stack (confirmed by Carlos in M3, checked against the `package.json`/`pyproject.toml` and imports of the toolkit-library subscription app and the vdc-plugins-webpage storefront; the add-in items come from the highlight above): C#, .NET 8, Revit API, Inno Setup, Next.js, TypeScript, Prisma, MySQL, NextAuth, Stripe, Docker, Tailwind CSS, shadcn/ui.
 3. **F1 Forecast Lab.** Python `uv` monorepo with FastF1 ingestion, leakage checks, logistic vs LightGBM vs XGBoost with calibration compared on event- and season-level backtests, the `f1-weekend` operator CLI, Supabase sync, a Next.js predicted-vs-actual dashboard. Real metrics come from `f1_model_runs`, not estimates. Visuals: dashboard screenshots, pipeline diagram.
+   Stack (confirmed by Carlos in M3, checked against the `package.json`/`pyproject.toml` and imports of deepspace-labs (pipeline) and DeepSpace (dashboard)): Python, uv, FastF1, pandas, NumPy, scikit-learn, LightGBM, XGBoost, pytest, Supabase, Next.js, TypeScript.
 4. **Expressus Café.** Next.js storefront; checkout totals and stock changes in transactional database functions; guest carts on an HTTP-only cookie; Stripe Checkout with signed webhooks; Skydropx shipping quotes. Visuals: storefront screenshots, checkout-flow diagram.
+   Stack (confirmed by Carlos in M3, checked against the `package.json`/`pyproject.toml` and imports of expressus-app): Next.js, React, TypeScript, Supabase, Stripe Checkout, Skydropx, Zod, SWR, Resend, Tailwind CSS, shadcn/ui, Vitest.
 5. **Forge Clash Insight.** GJK collision detection and severity scoring; Autodesk (APS/ACC) and Procore sign-in; model processing and a Three.js viewer; LLM analysis through n8n. Visuals: clash-flow diagram, GJK excerpt.
+   Stack (confirmed by Carlos in M3, checked against the `package.json`/`pyproject.toml` and imports of next-fci): Next.js, TypeScript, Three.js, React Three Fiber, Autodesk (APS/ACC), Procore, Supabase, OpenAI API, n8n, TanStack Query, Tailwind CSS.
 
 UtahBIM's own time-savings claims on vdcplugins.com stay out of the case study unless quoted and attributed to the product site.
+
+**Tags and clients (confirmed by Carlos, M3)**
+
+| Project | Tags | Client |
+| --- | --- | --- |
+| Fibrant | AI, Finance | DeepSpace |
+| VDC Plugins for Revit | Construction tech, E-commerce | UtahBIM |
+| F1 Forecast Lab | ML/Data, AI | DeepSpace |
+| Expressus Café | E-commerce | DeepSpace |
+| Forge Clash Insight | Construction tech, AI | UtahBIM |

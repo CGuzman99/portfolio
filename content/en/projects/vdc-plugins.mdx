@@ -1,0 +1,23 @@
+export const meta = {
+  title: "VDC Plugins for Revit",
+  summary: "A commercial suite of about 10 Revit add-ins for construction teams, and the licensing and subscription system behind it.",
+};
+
+## Problem
+
+VDC Plugins is sold by subscription, so two things have to work together: tools that run reliably inside Revit, and a licensing system that only lets paying users in.
+
+## My role
+
+I'm the lead developer of the add-in suite, and I contribute to UtahBIM's subscription app and storefront. I work with UtahBIM as a contractor through Upwork.
+
+## Approach
+
+- **Add-ins.** About 10 tools in C# on .NET 8, for Revit 2025 and 2026, shipped in one Inno Setup installer.
+- **Licensing gate.** Every tool goes through a shared per-tool gate that blocks unless access is confirmed. Tools from another developer were brought onto the same structure and gate, with fixes along the way.
+- **Ports and rules.** Logic that lived in Dynamo and Python was ported to C#. Slope checks follow IPC Table 704.1, with the tolerance documented.
+- **Web side.** Each plugin has a slug in a registry. Stripe handles organisation and personal subscriptions, and webhooks follow each subscription's lifecycle by its ID, which closed gaps where access had leaked. The storefront has a free-trial flow and installer downloads, and deploys with Docker and Prisma.
+
+## Outcome
+
+VDC Plugins is a commercial product, sold at [vdcplugins.com](https://vdcplugins.com/).

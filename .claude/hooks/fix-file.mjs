@@ -10,9 +10,10 @@
 import { extname, relative, resolve } from "node:path";
 import { ESLINT, projectRoot, readPayload, runBin } from "./lib.mjs";
 
-// .mdx is deliberately absent until M3 configures an MDX parser: ESLint
-// prints its whole "Oops! Something went wrong!" block for an unparseable
-// file, which is pure noise on every MDX write.
+// .mdx is deliberately absent: no ESLint MDX parser is installed (none was
+// approved in M3), and ESLint prints its whole "Oops! Something went wrong!"
+// block for an unparseable file, which is pure noise on every MDX write. MDX
+// is still checked: the build compiles it and Zod validates its `meta`.
 const FIXABLE = new Set([".ts", ".tsx", ".mts", ".cts"]);
 
 const payload = await readPayload();

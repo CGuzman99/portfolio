@@ -2,7 +2,8 @@
   "meta": {
     "title": "Carlos Guzman — Software engineer",
     "description": "Software engineer building web platforms, desktop tools and AI features.",
-    "notFoundTitle": "Page not found"
+    "notFoundTitle": "Page not found",
+    "projectsTitle": "Projects"
   },
   "skipLink": "Skip to content",
   "nav": {
@@ -46,5 +47,40 @@
   "home": {
     "label": "§ 01",
     "headline": "Software engineer building web platforms, desktop tools and <brand>AI features</brand>."
+  },
+  "projects": {
+    "label": "§ 02",
+    "title": "Projects",
+    "tagsLabel": "Tags",
+    "timeframe": "<start>{startLabel}</start> – <end>{endLabel}</end>",
+    "present": "present",
+    "status": {
+      "live": "Live",
+      "commercial": "Commercial product",
+      "prototype": "Prototype"
+    },
+    "tags": {
+      "ai": "AI",
+      "construction": "Construction tech",
+      "ecommerce": "E-commerce",
+      "ml-data": "ML/Data",
+      "finance": "Finance"
+    }
+  },
+  "caseStudy": {
+    "details": "Project details",
+    "role": "Role",
+    "timeframe": "Timeframe",
+    "status": "Status",
+    "stack": "Stack",
+    "client": "Client",
+    "links": "Links",
+    "heroPending": "Hero visual: [PLACEHOLDER]",
+    "walkthrough": "Code walkthrough available on request.",
+    "next": "Next project"
+  },
+  "mdx": {
+    "figure": "Fig. {number}",
+    "footnotes": "Footnotes"
   }
 }

@@ -797,6 +797,18 @@
 }
 
 @layer base {
+  /* The sticky site header's height. Below sm the nav wraps to a second row.
+     Anything that sticks or scrolls into view under the header clears it. */
+  :root {
+    --header-height: 6.5rem;
+    @variant sm {
+      --header-height: 4.5rem;
+    }
+  }
+  html {
+    /* Anchor jumps (footnotes) and focused controls land below the header. */
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+  }
   * {
     @apply border-border outline-ring/50;
   }
@@ -823,5 +835,92 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Case-study prose (M3). MDX bodies render plain HTML; these rules set it in
+   the paper's style with the theme tokens, so every colour follows the theme.
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  .prose-paper {
+    counter-reset: section;
+
+    & > * + * {
+      @apply mt-4;
+    }
+
+    /* Section headings carry a "§ 01" label. The empty alt text keeps screen
+       readers from announcing the decoration before every heading. */
+    & h2:not(#footnote-label) {
+      @apply mt-16 text-h2 font-medium;
+      counter-increment: section;
+
+      &::before {
+        @apply mb-2 block font-mono text-meta font-normal tracking-wider text-muted-foreground;
+        content: "§ " counter(section, decimal-leading-zero) / "";
+      }
+    }
+
+    & h3 {
+      @apply mt-8 text-h3 font-medium;
+    }
+
+    & :is(ul, ol):not([data-footnotes] *) {
+      @apply pl-6;
+    }
+    & ul {
+      @apply list-disc;
+    }
+    & ol {
+      @apply list-decimal;
+    }
+    & li + li {
+      @apply mt-2;
+    }
+
+    & a {
+      @apply rounded-sm text-brand underline decoration-border underline-offset-4 transition-colors hover:decoration-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring;
+    }
+
+    & blockquote {
+      @apply border-l-2 border-border pl-4 text-muted-foreground;
+    }
+
+    & :not(pre) > code {
+      @apply rounded-sm bg-muted px-1 font-mono text-[0.9em];
+    }
+
+    & [data-footnotes] ol {
+      @apply mt-4 list-decimal pl-6;
+    }
+    & sup a {
+      @apply no-underline;
+    }
+  }
+
+  /* rehype-pretty-code: both shiki themes arrive as CSS variables on every
+     token; the `.dark` class next-themes sets picks which one shows. */
+  [data-rehype-pretty-code-figure] {
+    & pre {
+      @apply overflow-x-auto py-4 font-mono text-meta leading-relaxed focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring;
+    }
+    & code {
+      @apply grid;
+    }
+    & [data-line] {
+      @apply px-4;
+    }
+    & span {
+      color: var(--shiki-light);
+    }
+  }
+  .dark [data-rehype-pretty-code-figure] span {
+    color: var(--shiki-dark);
+  }
+  /* A bare fenced block (outside CodeExcerpt) gets the same frame. */
+  .prose-paper > [data-rehype-pretty-code-figure] {
+    @apply my-8 rounded-sm border border-border;
   }
 }

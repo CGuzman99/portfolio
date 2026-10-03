@@ -1,0 +1,23 @@
+export const meta = {
+  title: "Expressus Café",
+  summary: "An online store with Stripe checkout and shipping quotes, live and taking orders.",
+};
+
+## Problem
+
+A small online store still has to get the hard parts right: totals that match what is charged, stock that can't be oversold, and shipping costs before checkout.
+
+## My role
+
+I'm the main developer of Expressus Café, a DeepSpace project.
+
+## Approach
+
+- **Storefront** built with Next.js.
+- **Checkout integrity.** Totals and stock changes run inside transactional database functions, so an order either completes in full or not at all.
+- **Guest carts.** You can shop without an account; the cart lives on an HTTP-only cookie.
+- **Payments and shipping.** Stripe Checkout with signed webhooks, and shipping quotes from Skydropx.
+
+## Outcome
+
+Live at [expressus.shop](https://www.expressus.shop/) and taking orders.

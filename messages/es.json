@@ -2,7 +2,8 @@
   "meta": {
     "title": "Carlos Guzman — Desarrollador de software",
     "description": "Desarrollador de software. Creo plataformas web, herramientas de escritorio y funciones con IA.",
-    "notFoundTitle": "Página no encontrada"
+    "notFoundTitle": "Página no encontrada",
+    "projectsTitle": "Proyectos"
   },
   "skipLink": "Saltar al contenido",
   "nav": {
@@ -46,5 +47,40 @@
   "home": {
     "label": "§ 01",
     "headline": "Desarrollador de software. Creo plataformas web, herramientas de escritorio y <brand>funciones con IA</brand>."
+  },
+  "projects": {
+    "label": "§ 02",
+    "title": "Proyectos",
+    "tagsLabel": "Etiquetas",
+    "timeframe": "<start>{startLabel}</start> – <end>{endLabel}</end>",
+    "present": "actualidad",
+    "status": {
+      "live": "En producción",
+      "commercial": "Producto comercial",
+      "prototype": "Prototipo"
+    },
+    "tags": {
+      "ai": "IA",
+      "construction": "Construcción",
+      "ecommerce": "E-commerce",
+      "ml-data": "ML/Datos",
+      "finance": "Finanzas"
+    }
+  },
+  "caseStudy": {
+    "details": "Detalles del proyecto",
+    "role": "Rol",
+    "timeframe": "Periodo",
+    "status": "Estado",
+    "stack": "Stack",
+    "client": "Cliente",
+    "links": "Enlaces",
+    "heroPending": "Imagen principal: [PLACEHOLDER]",
+    "walkthrough": "Puedo mostrarte el código si me lo pides.",
+    "next": "Siguiente proyecto"
+  },
+  "mdx": {
+    "figure": "Fig. {number}",
+    "footnotes": "Notas"
   }
 }

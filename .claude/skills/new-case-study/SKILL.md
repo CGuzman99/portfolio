@@ -9,8 +9,8 @@ Scaffolds one case study. **Structure only** — this skill never writes copy.
 
 Usage: `/new-case-study <slug>` (kebab-case, e.g. `forge-clash-insight`).
 
-> Depends on the content system from M3. If `content/projects.ts` does not
-> exist yet, say so and stop rather than inventing a shape for it.
+> Facts go in `content/projects.ts` (Zod schema at the top of that file);
+> words go in the MDX files; `content/mdx.ts` wires them together.
 
 ## Steps
 
@@ -30,6 +30,9 @@ Usage: `/new-case-study <slug>` (kebab-case, e.g. `forge-clash-insight`).
      insert in the middle.
    - `featured` — `true` only for the three projects Home lists.
    - `status` — `live`, `commercial` or `prototype`.
+   - `tags` — from the confirmed tag mapping in `content-sources.md`.
+   - `team` — `{ en, es }`; `es` stays `"[PLACEHOLDER]"` until Carlos approves
+     a Spanish version.
    - `timeframe` — `{ start, end }`, with `end: null` for "present".
    - `client` — `{ name, url }`, or `null` when Carlos is the client.
    - `hero` — `{ kind: "screenshot" | "figure", src }`. The asset itself
@@ -39,14 +42,15 @@ Usage: `/new-case-study <slug>` (kebab-case, e.g. `forge-clash-insight`).
    Never guess a date, a team size or an outcome.
 
 4. **Create both MDX files** — `content/en/projects/<slug>.mdx` and
-   `content/es/projects/<slug>.mdx` — with frontmatter and the four body
-   sections, every body left as a placeholder:
+   `content/es/projects/<slug>.mdx` — with a `meta` export and the four body
+   sections, every body left as a placeholder. `@next/mdx` does not parse YAML
+   frontmatter; `meta` is validated with Zod in `content/mdx.ts`.
 
    ```mdx
-   ---
-   title: "[PLACEHOLDER]"
-   summary: "[PLACEHOLDER]"
-   ---
+   export const meta = {
+     title: "[PLACEHOLDER]",
+     summary: "[PLACEHOLDER]",
+   };
 
    ## Problem
 
@@ -67,8 +71,14 @@ Usage: `/new-case-study <slug>` (kebab-case, e.g. `forge-clash-insight`).
 
    Use the Spanish headings in the ES file (`Problema`, `Mi rol`, `Enfoque`,
    `Resultado`) but leave the bodies as `[PLACEHOLDER]`. Prose is written in M7
-   and translated with `/translate-es`.
+   and translated with `/translate-es`. `title` may be the project's name
+   exactly as content-sources.md spells it; everything else stays a
+   placeholder.
 
-5. **Verify.** Run `npm run typecheck`, then `npm run build` to confirm the
+5. **Register the MDX** in `content/mdx.ts`: add an `import * as` line for
+   each locale and an entry in `modules`. The typecheck fails until you do;
+   that is the guard against a record without its words.
+
+6. **Verify.** Run `npm run typecheck`, then `npm run build` to confirm the
    record validates and both locales resolve. Report what you created and which
    fields came out as `[PLACEHOLDER]`, so Carlos knows what he still owes.

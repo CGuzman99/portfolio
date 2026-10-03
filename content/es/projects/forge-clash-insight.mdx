@@ -1,0 +1,23 @@
+export const meta = {
+  title: "Forge Clash Insight",
+  summary: "Un prototipo de detección de interferencias en 3D para UtahBIM: colisiones con GJK, puntaje de severidad y análisis con LLM, en un visor de Three.js.",
+};
+
+## Problema
+
+Las interferencias entre sistemas de un edificio en un modelo 3D salen caras cuando se detectan tarde. Forge Clash Insight es un prototipo para encontrarlas y evaluar qué tanto importa cada una.
+
+## Mi rol
+
+Fui el desarrollador principal y lo construí para UtahBIM.
+
+## Enfoque
+
+- **Detección.** La detección de colisiones con GJK encuentra los elementos que se cruzan, y un puntaje de severidad ordena cada interferencia.
+- **Inicio de sesión.** Los usuarios entran con Autodesk (APS/ACC) o Procore.
+- **Visor.** Los modelos se procesan y se muestran en un visor de Three.js.
+- **Análisis.** El análisis de las interferencias con LLM corre a través de n8n.
+
+## Resultado
+
+Un prototipo para UtahBIM.

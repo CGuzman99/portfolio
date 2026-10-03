@@ -1,13 +1,23 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
-import { LOCALES, TRIGGER_NAMES, setLocaleCookie } from "./helpers";
+import {
+  LOCALES,
+  PROJECT_SLUGS,
+  TRIGGER_NAMES,
+  setLocaleCookie,
+} from "./helpers";
 
 /**
  * Accessibility gate: every route × both locales (via the NEXT_LOCALE cookie)
  * × both themes (via the Playwright projects in playwright.config.ts). The
  * unknown route exercises the 404 page, which renders inside the site shell.
  */
-const routes = ["/", "/this-page-does-not-exist"];
+const routes = [
+  "/",
+  "/projects",
+  ...PROJECT_SLUGS.map((slug) => `/projects/${slug}`),
+  "/this-page-does-not-exist",
+];
 
 function axe(page: Page) {
   return new AxeBuilder({ page })

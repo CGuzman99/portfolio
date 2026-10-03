@@ -20,3 +20,16 @@ export const TRIGGER_NAMES = {
   en: { language: "Language: EN (English)", theme: "Theme: System" },
   es: { language: "Idioma: ES (español)", theme: "Tema: Sistema" },
 } as const;
+
+/**
+ * The case studies in registry order. Kept as a literal rather than imported
+ * from content/projects.ts, so a project dropped from the registry fails a
+ * test instead of silently shrinking the suite.
+ */
+export const PROJECT_SLUGS = [
+  "fibrant",
+  "vdc-plugins",
+  "f1-forecast-lab",
+  "expressus-cafe",
+  "forge-clash-insight",
+] as const;

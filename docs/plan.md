@@ -20,7 +20,7 @@ All 17 planning items are decided; the table is the source for `docs/decisions.m
 | # | Item | Decision |
 | --- | --- | --- |
 | 1 | Positioning | Software Engineer, full-stack plus AI; remote full-time and contract roles, US, Mexico and elsewhere; no seniority level stated |
-| 2 | Brand | Personal name only; "Available for contract work" block with no prices; Upwork Top Rated and 100% JSS shown; no testimonials; DeepSpace only in About and the F1 case study |
+| 2 | Brand | Personal name only; "Available for contract work" block with no prices; Upwork Top Rated and 100% JSS shown; no testimonials; DeepSpace named in About and in the Fibrant, F1 Forecast Lab and Expressus Café case studies (changed by Carlos in M3: all three are DeepSpace projects) |
 | 3 | Name and domain | Display name Carlos Guzman; domain and email deferred; site URL read from `NEXT_PUBLIC_SITE_URL` |
 | 4 | Lineup | Fibrant, VDC Plugins for Revit, F1 Forecast Lab (featured on Home), then Expressus Café, Forge Clash Insight; UtahBIM named and linked |
 | 5 | Case-study facts | Confirmed per project in the Case studies section; unknown outcomes stay as `[PLACEHOLDER]` |
@@ -63,8 +63,8 @@ Six routes, each at one URL in both languages; the header carries the EN / ES to
 | Role | Dates |
 | --- | --- |
 | Software Engineer (contract via Upwork) · UtahBIM | Aug 2025 – present |
-| Founder and developer · Fibrant | 2026 – present |
-| Founder and developer · Expressus Café | 2025 – present |
+| Main developer · Fibrant (DeepSpace project) | 2026 – present |
+| Main developer · Expressus Café (DeepSpace project) | 2025 – present |
 | Freelance software developer · Upwork (Top Rated, 100% JSS) | 2024 – present |
 | Freelance developer · Fiverr (small Prolog projects) | 2024 – 2025 |
 
@@ -80,11 +80,11 @@ Five case studies, in this order; these rows seed `content/projects.ts` and `doc
 
 | # | Project | Timeframe | Role and team | Outcome | Links |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Fibrant | Mar 2026 – present | Solo | Launched | [fibrant.app](https://www.fibrant.app) |
+| 1 | Fibrant | Mar 2026 – present | Main developer (DeepSpace project) | Launched | [fibrant.app](https://www.fibrant.app) |
 | 2 | VDC Plugins for Revit | Feb 2026 – present | Lead developer of the add-in suite; contributor to UtahBIM's subscription app and storefront | Commercial product | [vdcplugins.com](https://vdcplugins.com/), [UtahBIM](https://www.utahbim.com/) |
-| 3 | F1 Forecast Lab | May – Jun 2026 | Built by Carlos; Luis (DeepSpace) supervised and gave feedback | Live; qualifying and race models done | [deepspace.com.mx](https://www.deepspace.com.mx/) |
-| 4 | Expressus Café | Jul 2025 – present | Solo | Live, taking orders | [expressus.shop](https://www.expressus.shop/) |
-| 5 | Forge Clash Insight | Aug 2025 – Mar 2026 | Main developer; Luis contributed | Prototype for UtahBIM | [UtahBIM](https://www.utahbim.com/) |
+| 3 | F1 Forecast Lab | May – Jun 2026 | Main developer (DeepSpace project) | Live; qualifying and race models done | [deepspace.com.mx](https://www.deepspace.com.mx/) |
+| 4 | Expressus Café | Jul 2025 – present | Main developer (DeepSpace project) | Live, taking orders | [expressus.shop](https://www.expressus.shop/) |
+| 5 | Forge Clash Insight | Aug 2025 – Mar 2026 | Main developer | Prototype for UtahBIM | [UtahBIM](https://www.utahbim.com/) |
 
 **Approach highlights and visuals**
 

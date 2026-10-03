@@ -1,0 +1,22 @@
+export const meta = {
+  title: "Fibrant",
+  summary: "A multi-currency investment tracker with a multi-model AI analyst, built as a DeepSpace project.",
+};
+
+## Problem
+
+A portfolio held in US dollars and Mexican pesos is easy to measure wrong: deposits and withdrawals distort simple percentages, and every figure moves with the exchange rate. Fibrant tracks investments in both currencies with returns calculated properly, and adds an analyst you can ask about your own holdings.
+
+## My role
+
+I'm the main developer of Fibrant, a DeepSpace project. My work spans the database and its access rules, the AI analyst and the interface.
+
+## Approach
+
+- **AI analyst.** You choose the model: Claude, ChatGPT or Gemini. The analyst reads the portfolio through tool use instead of guessing, keeps a memory per portfolio, and runs on a static system prompt designed to stay cache-friendly. Usage is metered in credits by tier.
+- **Returns.** Time-weighted returns and XIRR are calculated with `decimal.js`, so money math doesn't pick up floating-point error, and values convert between USD and MXN.
+- **Access.** Supabase row-level security decides who sees what, including portfolios shared with other users.
+
+## Outcome
+
+Fibrant is launched at [fibrant.app](https://www.fibrant.app).

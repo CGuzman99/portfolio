@@ -1,0 +1,22 @@
+export const meta = {
+  title: "Fibrant",
+  summary: "Una plataforma de seguimiento de inversiones multimoneda con un analista de IA multimodelo, desarrollada como proyecto de DeepSpace.",
+};
+
+## Problema
+
+Un portafolio en dólares y pesos es fácil de medir mal: los depósitos y retiros distorsionan los porcentajes simples, y cada cifra cambia con el tipo de cambio. Fibrant da seguimiento a inversiones en ambas monedas, calcula bien los rendimientos y suma un analista al que le puedes preguntar sobre tus propias inversiones.
+
+## Mi rol
+
+Soy el desarrollador principal de Fibrant, un proyecto de DeepSpace. Mi trabajo abarca la base de datos y sus reglas de acceso, el analista de IA y la interfaz.
+
+## Enfoque
+
+- **Analista de IA.** Tú eliges el modelo: Claude, ChatGPT o Gemini. El analista consulta el portafolio con tool use en lugar de adivinar, guarda una memoria por portafolio y usa un system prompt estático pensado para aprovechar el caché. El uso se mide en créditos según el plan.
+- **Rendimientos.** Los rendimientos ponderados por tiempo y la XIRR se calculan con `decimal.js`, para que las cuentas de dinero no arrastren errores de punto flotante, y los montos se convierten entre USD y MXN.
+- **Acceso.** El row-level security de Supabase define quién ve qué, incluidos los portafolios compartidos con otros usuarios.
+
+## Resultado
+
+Fibrant ya está lanzado en [fibrant.app](https://www.fibrant.app).

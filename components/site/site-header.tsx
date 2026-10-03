@@ -16,10 +16,13 @@ export async function SiteHeader() {
   const t = await getTranslations("nav");
 
   return (
-    <header className="border-b border-border">
+    // Sticky so the nav and toggles are always in reach. It is opaque, and its
+    // height is the --header-height token, which the sticky metadata column
+    // and scroll-padding-top (anchors, focus) both clear.
+    <header className="sticky top-0 z-40 border-b border-border bg-background">
       {/* Three sections, justified between: name, nav, toggles. Below sm the
           nav drops to its own row so the name and toggles keep the first. */}
-      <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-x-8 gap-y-2 px-6 py-4 sm:px-8">
+      <div className="mx-auto flex h-(--header-height) w-full max-w-5xl flex-wrap content-center items-center justify-between gap-x-8 gap-y-4 px-6 sm:px-8">
         <Link
           href="/"
           className={`${linkClass} font-serif text-h3 leading-none font-medium`}

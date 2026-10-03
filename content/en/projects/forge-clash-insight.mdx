@@ -1,0 +1,23 @@
+export const meta = {
+  title: "Forge Clash Insight",
+  summary: "A 3D clash-detection prototype for UtahBIM: GJK collision checks, severity scoring and LLM analysis, in a Three.js viewer.",
+};
+
+## Problem
+
+Clashes between building systems in a 3D model are costly when they are found late. Forge Clash Insight is a prototype for finding them and judging how much each one matters.
+
+## My role
+
+I was the main developer, building it for UtahBIM.
+
+## Approach
+
+- **Detection.** GJK collision detection finds intersecting elements, and a severity score ranks each clash.
+- **Sign-in.** Users sign in with Autodesk (APS/ACC) or Procore.
+- **Viewer.** Models are processed and shown in a Three.js viewer.
+- **Analysis.** LLM analysis of the clashes runs through n8n.
+
+## Outcome
+
+A prototype for UtahBIM.
