@@ -1,69 +1,102 @@
-import Image from "next/image";
+/**
+ * M1 placeholder. This page exists to exercise every design token so M2 has
+ * something real to run its contrast and axe checks against. Home is built
+ * for real in M4 from docs/content-sources.md.
+ */
+
+const swatches = [
+  { name: "background", className: "bg-background" },
+  { name: "foreground", className: "bg-foreground" },
+  { name: "muted", className: "bg-muted" },
+  { name: "muted-foreground", className: "bg-muted-foreground" },
+  { name: "border", className: "bg-border" },
+  { name: "brand", className: "bg-brand" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="mx-auto w-full max-w-text flex-1 px-6 py-16 sm:px-8 sm:py-24">
+      <p className="font-mono text-meta text-muted-foreground uppercase tracking-wider">
+        § 01 &nbsp;Scaffold
+      </p>
+
+      <h1 className="mt-6 font-serif text-hero-sm font-medium md:text-hero">
+        Software engineer building web platforms, desktop tools and{" "}
+        <span className="text-brand">AI features</span>.
+      </h1>
+
+      <p className="mt-8 text-balance">
+        I&rsquo;ve built an e-commerce platform with Stripe, a multi-currency
+        investment tracker with an AI analyst, Revit add-ins and a 3D
+        clash-detection tool for the construction industry, and an ML
+        forecasting pipeline. Open to full-time and contract roles, remote.
+      </p>
+
+      <h2 className="mt-16 font-serif text-h2">Type scale</h2>
+
+      <dl className="mt-6 space-y-4 border-t border-border pt-6">
+        <div>
+          <dt className="font-mono text-meta text-muted-foreground">
+            Serif / headline / 44—32 px
+          </dt>
+          <dd className="font-serif text-h2">
+            Geometry, financial math and models that have to be right
+          </dd>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div>
+          <dt className="font-mono text-meta text-muted-foreground">
+            Sans / body / 17 px / 1.65
+          </dt>
+          <dd>
+            Server Components everywhere except the toggles and the contact
+            form; facts live once in TypeScript, words live per locale in MDX.
+          </dd>
         </div>
-      </main>
-    </div>
+        <div>
+          <dt className="font-mono text-meta text-muted-foreground">
+            Mono / metadata / 13 px
+          </dt>
+          <dd className="font-mono text-meta">
+            0123456789 · § 01 · Fig. 1 · ABCDEFGHIJKLMNOPQRSTUVWXYZ
+          </dd>
+        </div>
+      </dl>
+
+      <h3 className="mt-16 font-serif text-h3">Palette</h3>
+
+      <figure className="mt-6">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-3 lg:grid-cols-6">
+          {swatches.map((swatch) => (
+            <div
+              key={swatch.name}
+              className="flex flex-col gap-2 bg-background p-4"
+            >
+              <span
+                aria-hidden="true"
+                className={`h-10 rounded-sm border border-border ${swatch.className}`}
+              />
+              <span className="font-mono text-meta text-muted-foreground">
+                {swatch.name}
+              </span>
+            </div>
+          ))}
+        </div>
+        <figcaption className="mt-3 font-mono text-meta text-muted-foreground">
+          Fig. 1 &mdash; Near-monochrome page with one deep-green accent. The
+          theme follows the system, so switching your OS appearance repaints
+          every swatch above.
+        </figcaption>
+      </figure>
+
+      <p className="mt-16 border-t border-border pt-6 font-mono text-meta text-muted-foreground">
+        Milestone 1 of 8 ·{" "}
+        <a
+          className="text-brand underline decoration-border underline-offset-4 transition-colors hover:decoration-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          href="https://github.com/CGuzman99/portfolio"
+        >
+          CGuzman99/portfolio
+        </a>
+      </p>
+    </main>
   );
 }
