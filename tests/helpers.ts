@@ -21,6 +21,15 @@ export const TRIGGER_NAMES = {
   es: { language: "Idioma: ES (español)", theme: "Tema: Sistema" },
 } as const;
 
+/** The header's menu button and the panel's close button, below 640px. */
+export const MENU_NAMES = {
+  en: { open: "Menu", close: "Close menu" },
+  es: { open: "Menú", close: "Cerrar menú" },
+} as const;
+
+/** A phone-sized viewport, below the `sm` breakpoint. */
+export const MOBILE_VIEWPORT = { width: 390, height: 800 } as const;
+
 /**
  * The case studies in registry order. Kept as a literal rather than imported
  * from content/projects.ts, so a project dropped from the registry fails a

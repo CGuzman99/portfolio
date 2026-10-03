@@ -2,6 +2,8 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import {
   LOCALES,
+  MENU_NAMES,
+  MOBILE_VIEWPORT,
   PROJECT_SLUGS,
   TRIGGER_NAMES,
   setLocaleCookie,
@@ -50,5 +52,15 @@ for (const locale of LOCALES) {
         expect((await axe(page)).violations).toEqual([]);
       });
     }
+
+    test("the open mobile menu has no accessibility violations", async ({
+      page,
+    }) => {
+      await page.setViewportSize(MOBILE_VIEWPORT);
+      await page.goto("/");
+      await page.getByRole("button", { name: MENU_NAMES[locale].open }).click();
+      await expect(page.getByRole("dialog")).toBeVisible();
+      expect((await axe(page)).violations).toEqual([]);
+    });
   });
 }

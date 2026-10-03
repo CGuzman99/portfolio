@@ -10,7 +10,9 @@
     "label": "Main",
     "projects": "Projects",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu",
+    "closeMenu": "Close menu"
   },
   "language": {
     "trigger": "Language: {code} ({name})",

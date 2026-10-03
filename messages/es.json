@@ -10,7 +10,9 @@
     "label": "Inicio",
     "projects": "Proyectos",
     "about": "Sobre mí",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "menu": "Menú",
+    "closeMenu": "Cerrar menú"
   },
   "language": {
     "trigger": "Idioma: {code} ({name})",

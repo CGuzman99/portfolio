@@ -797,13 +797,11 @@
 }
 
 @layer base {
-  /* The sticky site header's height. Below sm the nav wraps to a second row.
-     Anything that sticks or scrolls into view under the header clears it. */
+  /* The sticky site header's height: one row at every width, because below
+     sm the nav and toggles move into the menu panel. Anything that sticks or
+     scrolls into view under the header clears it. */
   :root {
-    --header-height: 6.5rem;
-    @variant sm {
-      --header-height: 4.5rem;
-    }
+    --header-height: 4.5rem;
   }
   html {
     /* Anchor jumps (footnotes) and focused controls land below the header. */

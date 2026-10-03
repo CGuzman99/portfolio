@@ -55,7 +55,10 @@ export function LanguageToggle() {
   const status = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (readPending() !== active || !status.current) return;
+    // Below sm a second toggle lives in the menu panel while the header one is
+    // display:none. Only a rendered instance may consume the pending switch,
+    // or the announcement lands in a status node no screen reader can hear.
+    if (readPending() !== active || !status.current?.checkVisibility()) return;
     writePending(null);
     status.current.textContent = t("changed", { name: t(`names.${active}`) });
   }, [active, t]);
