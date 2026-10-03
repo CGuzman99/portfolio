@@ -37,10 +37,18 @@ export default function Home() {
       <dl className="mt-6 space-y-4 border-t border-border pt-6">
         <div>
           <dt className="font-mono text-meta text-muted-foreground">
-            Serif / headline / 44—32 px
+            Serif / headline / 44&ndash;32 px
           </dt>
           <dd className="font-serif text-h2">
             Geometry, financial math and models that have to be right
+          </dd>
+        </div>
+        <div>
+          <dt className="font-mono text-meta text-muted-foreground">
+            Serif / subhead / 20 px
+          </dt>
+          <dd className="font-serif text-h3">
+            Problem, My role, Approach, Outcome
           </dd>
         </div>
         <div>
@@ -62,7 +70,7 @@ export default function Home() {
         </div>
       </dl>
 
-      <h3 className="mt-16 font-serif text-h3">Palette</h3>
+      <h2 className="mt-16 font-serif text-h2">Palette</h2>
 
       <figure className="mt-6">
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-3 lg:grid-cols-6">
@@ -81,7 +89,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <figcaption className="mt-3 font-mono text-meta text-muted-foreground">
+        <figcaption className="mt-4 font-mono text-meta text-muted-foreground">
           Fig. 1 &mdash; Near-monochrome page with one deep-green accent. The
           theme follows the system, so switching your OS appearance repaints
           every swatch above.

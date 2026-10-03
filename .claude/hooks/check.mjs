@@ -4,11 +4,13 @@
  * so Claude keeps fixing instead of handing back broken code.
  *
  * Gated on the working tree: if no .ts/.tsx/.mdx file is dirty there is
- * nothing a turn could have broken, so it exits immediately rather than
- * spending ~20s on every conversational turn.
+ * nothing a turn could have broken, so it exits immediately. Note this is
+ * tree dirtiness, not "edited this turn" — during a milestone, where the whole
+ * branch is uncommitted, the checks run on every turn. That is the cost of the
+ * gate catching edits made by any means, including shell redirects.
  */
 import { spawnSync } from "node:child_process";
-import { ESLINT, NEXT, TSC, projectRoot, runBin } from "./lib.mjs";
+import { ESLINT, NEXT, TSC, projectRoot, readPayload, runBin } from "./lib.mjs";
 
 const WATCHED = /\.(ts|tsx|mts|cts|mdx)$/i;
 const MAX_LINES = 40;
@@ -29,6 +31,14 @@ function dirtyWatchedFiles() {
     // A rename shows as "old -> new"; the new path is what matters.
     .map((path) => (path.includes(" -> ") ? path.split(" -> ")[1] : path))
     .filter((path) => path && WATCHED.test(path));
+}
+
+// Claude already came back here once because of this hook. Blocking again
+// would loop forever on an error it cannot fix, so let the turn end and let
+// the human see the failure.
+const payload = await readPayload();
+if (payload?.stop_hook_active) {
+  process.exit(0);
 }
 
 if (dirtyWatchedFiles().length === 0) {

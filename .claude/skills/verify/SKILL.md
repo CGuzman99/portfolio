@@ -1,6 +1,6 @@
 ---
 name: verify
-description: Run the portfolio's full check suite — typecheck, lint, production build, and the Playwright + axe accessibility tests in both themes and locales. Use before opening a PR, when the user runs /verify, or when they ask whether the site passes its checks.
+description: Run the portfolio's full check suite — typecheck, lint, production build, and the Playwright + axe accessibility tests in every theme. Use before opening a PR, when the user runs /verify, or when they ask whether the site passes its checks.
 ---
 
 # Verify
