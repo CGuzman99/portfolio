@@ -3,7 +3,9 @@
     "title": "Carlos Guzman — Desarrollador de software",
     "description": "Desarrollador de software. Creo plataformas web, herramientas de escritorio y funciones con IA.",
     "notFoundTitle": "Página no encontrada",
-    "projectsTitle": "Proyectos"
+    "projectsTitle": "Proyectos",
+    "aboutTitle": "Sobre mí",
+    "cvTitle": "CV"
   },
   "skipLink": "Saltar al contenido",
   "nav": {
@@ -48,7 +50,87 @@
   },
   "home": {
     "label": "§ 01",
-    "headline": "Desarrollador de software. Creo plataformas web, herramientas de escritorio y <brand>funciones con IA</brand>."
+    "headline": "Desarrollador de software. Creo plataformas web, herramientas de escritorio y <brand>funciones con IA</brand>.",
+    "supporting": "He creado una plataforma de e-commerce con Stripe, una plataforma de seguimiento de inversiones multimoneda con un analista de IA, plugins para Revit y una herramienta 3D de detección de interferencias para la industria de la construcción, y un pipeline de pronósticos con machine learning. Disponible para puestos de tiempo completo y por contrato, en remoto.",
+    "workLabel": "§ 02",
+    "workTitle": "Trabajo destacado",
+    "stackLabel": "Stack",
+    "allProjects": "Todos los proyectos",
+    "contractLabel": "§ 03",
+    "ctaTitle": "¿Estás contratando o tienes un proyecto en mente?",
+    "ctaLink": "Escríbeme"
+  },
+  "contract": {
+    "title": "Disponible para proyectos por contrato",
+    "kinds": {
+      "web": "Aplicaciones web full-stack y SaaS",
+      "ai": "Funciones con IA para productos existentes (integración de LLMs, tool use, agentes)",
+      "desktop": "Aplicaciones de escritorio y add-ins en C#/.NET",
+      "data": "Pipelines de datos y machine learning"
+    },
+    "terms": "Trabajo remoto y asíncrono, con avances por escrito de forma regular, a través de Upwork o directamente.",
+    "upwork": "Perfil de Upwork",
+    "contact": "Formulario de contacto"
+  },
+  "about": {
+    "label": "§ 03",
+    "title": "Sobre mí",
+    "photoAlt": "Carlos Guzman",
+    "photoPending": "Foto: [PLACEHOLDER]",
+    "bio": "Soy Carlos, desarrollador de software en Mérida, Yucatán. Creo plataformas web, herramientas de escritorio y funciones con IA: desde una suite comercial de plugins para Revit hasta una plataforma de seguimiento de inversiones con un analista de IA multimodelo. Estudié Ciencias Físico-Matemáticas, y eso se nota en el trabajo que más disfruto: geometría, matemáticas financieras y modelos que tienen que salir bien. Trabajo a diario con agentes de programación como Claude Code y colaboro de forma remota con equipos de cualquier lugar.",
+    "location": "En Mérida, Yucatán (UTC−6) · Disponible para trabajo remoto en cualquier país",
+    "skillsTitle": "Habilidades",
+    "skills": [
+      {
+        "name": "Web",
+        "items": "TypeScript, React, Next.js, Tailwind, shadcn/ui"
+      },
+      {
+        "name": "Backend y datos",
+        "items": "PostgreSQL/Supabase, Stripe, Prisma, Docker"
+      },
+      {
+        "name": "Escritorio",
+        "items": "C#/.NET 8, Revit API, WPF, Inno Setup"
+      },
+      {
+        "name": "IA/ML",
+        "items": "APIs de Claude, OpenAI y Gemini, tool use y agentes, Python, XGBoost/LightGBM, scikit-learn"
+      },
+      {
+        "name": "3D",
+        "items": "Three.js / React Three Fiber, Autodesk Platform Services"
+      }
+    ],
+    "experienceTitle": "Experiencia",
+    "experience": {
+      "utahbim": "Desarrollador de software (por contrato vía Upwork) · UtahBIM",
+      "fibrant": "Desarrollador principal · Fibrant (proyecto de DeepSpace)",
+      "expressus": "Desarrollador principal · Expressus Café (proyecto de DeepSpace)",
+      "upwork": "Desarrollador de software freelance · Upwork (Top Rated, 100% JSS)",
+      "fiverr": "Desarrollador freelance · Fiverr (proyectos pequeños en Prolog)"
+    },
+    "educationTitle": "Formación",
+    "education": "Licenciatura en Ciencias Físico-Matemáticas, UMSNH, {start}–{end} · Pasante; tesis en Cosmología Cuántica de Lazos pendiente.",
+    "languagesTitle": "Idiomas",
+    "languages": "Español (nativo) · Inglés (intermedio, conversacional)",
+    "credentialsTitle": "Credenciales",
+    "credentials": "Upwork Top Rated · 100% JSS",
+    "linksTitle": "Perfiles",
+    "cvTitle": "CV",
+    "cvEn": "Descargar CV (inglés, PDF)",
+    "cvEs": "Descargar CV (español, PDF)",
+    "profiles": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "upwork": "Upwork"
+    }
+  },
+  "cv": {
+    "name": "Carlos Guzman",
+    "contactLabel": "Contacto",
+    "projectsTitle": "Proyectos",
+    "stackLabel": "Stack"
   },
   "projects": {
     "label": "§ 02",

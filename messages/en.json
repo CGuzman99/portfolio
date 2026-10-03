@@ -3,7 +3,9 @@
     "title": "Carlos Guzman — Software engineer",
     "description": "Software engineer building web platforms, desktop tools and AI features.",
     "notFoundTitle": "Page not found",
-    "projectsTitle": "Projects"
+    "projectsTitle": "Projects",
+    "aboutTitle": "About",
+    "cvTitle": "CV"
   },
   "skipLink": "Skip to content",
   "nav": {
@@ -48,7 +50,87 @@
   },
   "home": {
     "label": "§ 01",
-    "headline": "Software engineer building web platforms, desktop tools and <brand>AI features</brand>."
+    "headline": "Software engineer building web platforms, desktop tools and <brand>AI features</brand>.",
+    "supporting": "I've built an e-commerce platform with Stripe, a multi-currency investment tracker with an AI analyst, Revit add-ins and a 3D clash-detection tool for the construction industry, and an ML forecasting pipeline. Open to full-time and contract roles, remote.",
+    "workLabel": "§ 02",
+    "workTitle": "Selected work",
+    "stackLabel": "Stack",
+    "allProjects": "All projects",
+    "contractLabel": "§ 03",
+    "ctaTitle": "Hiring, or have a project in mind?",
+    "ctaLink": "Get in touch"
+  },
+  "contract": {
+    "title": "Available for contract work",
+    "kinds": {
+      "web": "Full-stack web apps and SaaS",
+      "ai": "AI features for existing products (LLM integration, tool use, agents)",
+      "desktop": "Desktop apps and add-ins in C#/.NET",
+      "data": "Data and ML pipelines"
+    },
+    "terms": "Remote and async-friendly with regular written updates, through Upwork or directly.",
+    "upwork": "Upwork profile",
+    "contact": "Contact form"
+  },
+  "about": {
+    "label": "§ 03",
+    "title": "About",
+    "photoAlt": "Carlos Guzman",
+    "photoPending": "Photo: [PLACEHOLDER]",
+    "bio": "I'm Carlos, a software engineer based in Mérida, Mexico. I build web platforms, desktop tools and AI features, from a commercial suite of Revit add-ins for construction teams to an investment tracker with a multi-model AI analyst. I studied physics and mathematics, and it shows in the work I enjoy most: geometry, financial math and models that have to be right. I build with coding agents like Claude Code as part of my daily workflow, and I work remotely with teams anywhere.",
+    "location": "Based in Mérida, Mexico (UTC−6) · Open to remote work worldwide",
+    "skillsTitle": "Skills",
+    "skills": [
+      {
+        "name": "Web",
+        "items": "TypeScript, React, Next.js, Tailwind, shadcn/ui"
+      },
+      {
+        "name": "Backend and data",
+        "items": "PostgreSQL/Supabase, Stripe, Prisma, Docker"
+      },
+      {
+        "name": "Desktop",
+        "items": "C#/.NET 8, Revit API, WPF, Inno Setup"
+      },
+      {
+        "name": "AI/ML",
+        "items": "Claude, OpenAI and Gemini APIs, tool use and agents, Python, XGBoost/LightGBM, scikit-learn"
+      },
+      {
+        "name": "3D",
+        "items": "Three.js / React Three Fiber, Autodesk Platform Services"
+      }
+    ],
+    "experienceTitle": "Experience",
+    "experience": {
+      "utahbim": "Software Engineer (contract via Upwork) · UtahBIM",
+      "fibrant": "Main developer · Fibrant (DeepSpace project)",
+      "expressus": "Main developer · Expressus Café (DeepSpace project)",
+      "upwork": "Freelance software developer · Upwork (Top Rated, 100% JSS)",
+      "fiverr": "Freelance developer · Fiverr (small Prolog projects)"
+    },
+    "educationTitle": "Education",
+    "education": "Physics and Mathematics, Universidad Michoacana de San Nicolás de Hidalgo, {start}–{end} · Coursework completed; thesis on loop quantum cosmology pending.",
+    "languagesTitle": "Languages",
+    "languages": "Spanish (native) · English (intermediate, conversational)",
+    "credentialsTitle": "Credentials",
+    "credentials": "Upwork Top Rated · 100% JSS",
+    "linksTitle": "Profiles",
+    "cvTitle": "CV",
+    "cvEn": "Download CV (English, PDF)",
+    "cvEs": "Download CV (Spanish, PDF)",
+    "profiles": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "upwork": "Upwork"
+    }
+  },
+  "cv": {
+    "name": "Carlos Guzman",
+    "contactLabel": "Contact",
+    "projectsTitle": "Projects",
+    "stackLabel": "Stack"
   },
   "projects": {
     "label": "§ 02",

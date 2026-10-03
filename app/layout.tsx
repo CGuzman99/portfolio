@@ -54,7 +54,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <NextIntlClientProvider>
             <a
               href="#main"
-              className="sr-only rounded-sm bg-background px-4 py-2 font-mono text-meta focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:outline-2 focus:outline-ring"
+              className="sr-only rounded-sm bg-background px-4 py-2 print:hidden font-mono text-meta focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:outline-2 focus:outline-ring"
             >
               {t("skipLink")}
             </a>

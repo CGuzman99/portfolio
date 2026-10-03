@@ -84,7 +84,7 @@ content/
 i18n/request.ts         locale from cookie, then Accept-Language, then en
 messages/en.json  messages/es.json
 proxy.ts                first-visit locale detection (Next 16)
-scripts/cv.ts  scripts/screenshots.ts
+scripts/cv.mts scripts/screenshots.ts
 tests/                  Playwright + axe
 docs/decisions.md  docs/content-sources.md
 ```

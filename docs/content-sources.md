@@ -18,9 +18,7 @@ Home hero and the site metadata.
 - **Headline (EN):** Software engineer building web platforms, desktop tools and AI features.
 - **Headline (ES):** Desarrollador de software. Creo plataformas web, herramientas de escritorio y funciones con IA.
 - **Supporting line (EN):** I've built an e-commerce platform with Stripe, a multi-currency investment tracker with an AI analyst, Revit add-ins and a 3D clash-detection tool for the construction industry, and an ML forecasting pipeline. Open to full-time and contract roles, remote.
-- **Supporting line (ES):** `[PLACEHOLDER]` — the plan gives the English
-  supporting line only. Carlos must approve a Spanish version before M4
-  ships Home; do not translate the English one unasked.
+- **Supporting line (ES):** He creado una plataforma de e-commerce con Stripe, una plataforma de seguimiento de inversiones multimoneda con un analista de IA, plugins para Revit y una herramienta 3D de detección de interferencias para la industria de la construcción, y un pipeline de pronósticos con machine learning. Disponible para puestos de tiempo completo y por contrato, en remoto. (Approved by Carlos, M4.)
 
 ## Site map and page content
 
@@ -58,6 +56,40 @@ Six routes, each at one URL in both languages; the header carries the EN / ES to
 **Education:** Physics and Mathematics, Universidad Michoacana de San Nicolás de Hidalgo, 2018–2022 · Coursework completed; thesis on loop quantum cosmology pending. ES: Licenciatura en Ciencias Físico-Matemáticas, UMSNH, 2018–2022 · Pasante; tesis en Cosmología Cuántica de Lazos pendiente.
 
 **Languages:** Spanish (native) · English (intermediate, conversational).
+
+## Profile links and contact (confirmed by Carlos, M4)
+
+- **GitHub:** https://github.com/CGuzman99
+- **LinkedIn:** https://www.linkedin.com/in/carlos-antonio-guzm%C3%A1n-jim%C3%A9nez-8b7328225
+- **Upwork:** https://www.upwork.com/freelancers/~01b3da283ab722a8c8
+- **Email:** carlosantoniogj@gmail.com — on the CV page and its PDFs only, not
+  on the other site pages.
+- **Photo:** `public/about/photo.jpg`, square, at least 800 px — pending.
+
+## Spanish copy (approved by Carlos, M4)
+
+The Spanish for the About and contract-block lines above that the plan gave in
+English only.
+
+| English | Spanish |
+| --- | --- |
+| Available for contract work | Disponible para proyectos por contrato |
+| Full-stack web apps and SaaS | Aplicaciones web full-stack y SaaS |
+| AI features for existing products (LLM integration, tool use, agents) | Funciones con IA para productos existentes (integración de LLMs, tool use, agentes) |
+| Desktop apps and add-ins in C#/.NET | Aplicaciones de escritorio y add-ins en C#/.NET |
+| Data and ML pipelines | Pipelines de datos y machine learning |
+| Remote and async-friendly with regular written updates, through Upwork or directly. | Trabajo remoto y asíncrono, con avances por escrito de forma regular, a través de Upwork o directamente. |
+| Software Engineer (contract via Upwork) · UtahBIM | Desarrollador de software (por contrato vía Upwork) · UtahBIM |
+| Main developer · Fibrant (DeepSpace project) | Desarrollador principal · Fibrant (proyecto de DeepSpace) |
+| Main developer · Expressus Café (DeepSpace project) | Desarrollador principal · Expressus Café (proyecto de DeepSpace) |
+| Freelance software developer · Upwork (Top Rated, 100% JSS) | Desarrollador de software freelance · Upwork (Top Rated, 100% JSS) |
+| Freelance developer · Fiverr (small Prolog projects) | Desarrollador freelance · Fiverr (proyectos pequeños en Prolog) |
+| Skill groups: Web · Backend and data · Desktop · AI/ML · 3D | Web · Backend y datos · Escritorio · IA/ML · 3D |
+| Claude, OpenAI and Gemini APIs, tool use and agents | APIs de Claude, OpenAI y Gemini, tool use y agentes |
+| Spanish (native) · English (intermediate, conversational) | Español (nativo) · Inglés (intermedio, conversacional) |
+| Credentials: Upwork Top Rated · 100% JSS | Upwork Top Rated · 100% JSS |
+
+The other skill items are product and library names and stay as written.
 
 ## Case studies
 

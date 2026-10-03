@@ -17,6 +17,8 @@ import {
 const routes = [
   "/",
   "/projects",
+  "/about",
+  "/cv",
   ...PROJECT_SLUGS.map((slug) => `/projects/${slug}`),
   "/this-page-does-not-exist",
 ];

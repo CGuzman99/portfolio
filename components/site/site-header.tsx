@@ -31,7 +31,7 @@ export async function SiteHeader() {
     // Sticky so the nav and toggles are always in reach. It is opaque, and its
     // height is the --header-height token, which the sticky metadata column
     // and scroll-padding-top (anchors, focus) both clear.
-    <header className="sticky top-0 z-40 border-b border-border bg-background">
+    <header className="sticky top-0 z-40 border-b border-border bg-background print:hidden">
       {/* From sm up: name, nav and toggles, justified between. Below sm the
           nav and toggles move into the menu panel. */}
       <div className="mx-auto flex h-(--header-height) w-full max-w-5xl items-center justify-between gap-8 px-6 sm:px-8">

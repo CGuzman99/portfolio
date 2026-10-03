@@ -922,3 +922,30 @@
     @apply my-8 rounded-sm border border-border;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Print (M4). /cv is printed to the two PDFs by scripts/cv.mts, and anyone can
+   print a page from the browser: either way it comes out black on white on
+   US Letter, whatever theme is on screen. The header, footer and skip link
+   carry `print:hidden`.
+   --------------------------------------------------------------------------- */
+
+@page {
+  size: letter;
+  margin: 0.6in;
+}
+
+@media print {
+  /* The light values from :root above (white page, ink links); keep in step. */
+  :root,
+  .dark {
+    --background: #ffffff;
+    --foreground: #141414;
+    --muted-foreground: #5f5e5a;
+    --border: #e4e3dd;
+    --brand: #141414;
+  }
+  html {
+    color-scheme: light;
+  }
+}
