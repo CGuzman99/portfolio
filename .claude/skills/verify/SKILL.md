@@ -22,8 +22,8 @@ tests, for example; say so and continue to the report.
 3. `npm run build` — Turbopack production build. This also type-checks with the
    project-local `tsc`, and it is where a case study missing an MDX file fails.
 4. `npm run test:e2e` — Playwright, which runs every spec twice, once per theme
-   (`chromium-light`, `chromium-dark`), including the axe assertions. From M2
-   the specs also cover both locales via the `NEXT_LOCALE` cookie.
+   (`chromium-light`, `chromium-dark`), including the axe assertions. The specs
+   cover both locales via the `NEXT_LOCALE` cookie.
 
 `npm run verify` chains all four; run them individually when you need to see
 which one broke.
@@ -47,6 +47,5 @@ which you may apply — but say explicitly that you did, and re-run the step.
 
 ## Known gaps to state, not hide
 
-- Locale coverage lands in M2; before that, step 4 covers themes only.
 - `.github/workflows/ci.yml` runs the same four steps on push and PR, but a
   green local run is not proof that CI is green. Say so when CI has not run.

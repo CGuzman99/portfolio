@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Carlos Guzman — Desarrollador de software",
+    "description": "Desarrollador de software. Creo plataformas web, herramientas de escritorio y funciones con IA.",
+    "notFoundTitle": "Página no encontrada"
+  },
+  "skipLink": "Saltar al contenido",
+  "nav": {
+    "label": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "contact": "Contacto"
+  },
+  "language": {
+    "trigger": "Idioma: {code} ({name})",
+    "menu": "Idioma",
+    "changed": "Idioma cambiado a {name}.",
+    "names": {
+      "en": "inglés",
+      "es": "español"
+    },
+    "native": {
+      "en": "English",
+      "es": "Español"
+    }
+  },
+  "theme": {
+    "trigger": "Tema",
+    "triggerCurrent": "Tema: {theme}",
+    "menu": "Tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema",
+    "changed": "Tema: {theme}."
+  },
+  "footer": {
+    "copyright": "© {year} Carlos Guzman",
+    "location": "En Mérida, Yucatán (UTC−6) · Disponible para trabajo remoto en cualquier país"
+  },
+  "notFound": {
+    "label": "§ 404",
+    "title": "Página no encontrada",
+    "body": "Esta página no existe o cambió de dirección.",
+    "home": "Volver al inicio"
+  },
+  "home": {
+    "label": "§ 01",
+    "headline": "Desarrollador de software. Creo plataformas web, herramientas de escritorio y <brand>funciones con IA</brand>."
+  }
+}

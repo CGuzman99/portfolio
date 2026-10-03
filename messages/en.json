@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Carlos Guzman — Software engineer",
+    "description": "Software engineer building web platforms, desktop tools and AI features.",
+    "notFoundTitle": "Page not found"
+  },
+  "skipLink": "Skip to content",
+  "nav": {
+    "label": "Main",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "language": {
+    "trigger": "Language: {code} ({name})",
+    "menu": "Language",
+    "changed": "Language changed to {name}.",
+    "names": {
+      "en": "English",
+      "es": "Spanish"
+    },
+    "native": {
+      "en": "English",
+      "es": "Español"
+    }
+  },
+  "theme": {
+    "trigger": "Theme",
+    "triggerCurrent": "Theme: {theme}",
+    "menu": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "changed": "Theme set to {theme}."
+  },
+  "footer": {
+    "copyright": "© {year} Carlos Guzman",
+    "location": "Based in Mérida, Mexico (UTC−6) · Open to remote work worldwide"
+  },
+  "notFound": {
+    "label": "§ 404",
+    "title": "Page not found",
+    "body": "This page doesn't exist, or it moved.",
+    "home": "Back to home"
+  },
+  "home": {
+    "label": "§ 01",
+    "headline": "Software engineer building web platforms, desktop tools and <brand>AI features</brand>."
+  }
+}

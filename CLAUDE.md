@@ -105,6 +105,8 @@ approved, before they run.
 
 ## Workflow
 
-One milestone per branch, per session, per PR. Plan mode first; Carlos approves
-the plan before any code. Before opening the PR: run `/verify`, then ask the
-`reviewer` subagent. Report failures; never fix a check by weakening it.
+One milestone per session. Work directly on `main`: no feature branches, no
+PRs. Plan mode first; Carlos approves the plan before any code. Before
+committing: run `/verify`, then ask the `reviewer` subagent. Report failures;
+never fix a check by weakening it. Commit and push to `main` only when Carlos
+asks.

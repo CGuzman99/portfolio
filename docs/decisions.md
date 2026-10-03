@@ -50,6 +50,18 @@ Direction C reads like a well-set technical paper: Plex type, a near-monochrome 
 - **Motion:** fades and small translates only, 150–200 ms, disabled under `prefers-reduced-motion`.
 - **Components:** shadcn Button, Form, Input, Textarea, Select, DropdownMenu (language toggle), Separator, Badge (tags), Sonner (form feedback).
 
+**Contrast (checked in M2).** WCAG 2.1 ratios for the text pairs the site uses, computed from the hex values in `app/globals.css`. Every pair clears AA for body text (4.5:1); axe's `color-contrast` rule checks the rendered pages in both themes on every run.
+
+| Text on surface | Light | Dark |
+| --- | --- | --- |
+| foreground on background | 17.62:1 | 15.97:1 |
+| muted-foreground on background | 6.21:1 | 7.32:1 |
+| muted-foreground on muted | 5.64:1 | 6.45:1 |
+| brand on background | 5.76:1 | 9.33:1 |
+| brand-foreground on brand | 5.76:1 | 9.33:1 |
+| popover-foreground on popover | 18.42:1 | 15.28:1 |
+| accent-foreground on accent (menu hover) | 16.00:1 | 14.07:1 |
+
 ## Technical architecture
 
 Server Components everywhere except the toggles and the contact form; facts live once in TypeScript, words live per locale in MDX and message files.

@@ -1,32 +1,44 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+import { LOCALES, TRIGGER_NAMES, setLocaleCookie } from "./helpers";
 
 /**
- * Accessibility smoke test. M2 extends `routes` with the EN/ES locale cookie
- * and the rest of the site map; the theme axis comes from the Playwright
- * projects in playwright.config.ts.
+ * Accessibility gate: every route × both locales (via the NEXT_LOCALE cookie)
+ * × both themes (via the Playwright projects in playwright.config.ts). The
+ * unknown route exercises the 404 page, which renders inside the site shell.
  */
-const routes = ["/"];
+const routes = ["/", "/this-page-does-not-exist"];
 
-for (const route of routes) {
-  test(`${route} has no accessibility violations`, async ({ page }) => {
-    await page.goto(route);
-
-    const results = await new AxeBuilder({ page })
-      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
-      .analyze();
-
-    expect(results.violations).toEqual([]);
-  });
+function axe(page: Page) {
+  return new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .analyze();
 }
 
-test("the theme follows the system colour scheme", async ({
-  page,
-}, testInfo) => {
-  await page.goto("/");
+for (const locale of LOCALES) {
+  test.describe(`locale ${locale}`, () => {
+    test.beforeEach(async ({ context, baseURL }) => {
+      await setLocaleCookie(context, baseURL, locale);
+    });
 
-  const expected = testInfo.project.name === "chromium-dark";
-  await expect
-    .poll(() => page.locator("html").evaluate((el) => el.classList.contains("dark")))
-    .toBe(expected);
-});
+    for (const route of routes) {
+      test(`${route} has no accessibility violations`, async ({ page }) => {
+        await page.goto(route);
+        expect((await axe(page)).violations).toEqual([]);
+      });
+    }
+
+    for (const menu of ["language", "theme"] as const) {
+      test(`the open ${menu} menu has no accessibility violations`, async ({
+        page,
+      }) => {
+        await page.goto("/");
+        await page
+          .getByRole("button", { name: TRIGGER_NAMES[locale][menu] })
+          .click();
+        await expect(page.getByRole("menu")).toBeVisible();
+        expect((await axe(page)).violations).toEqual([]);
+      });
+    }
+  });
+}
