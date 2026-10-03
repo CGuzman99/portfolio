@@ -1,11 +1,11 @@
 ---
 name: verify
-description: Run the portfolio's full check suite — typecheck, lint, production build, and the Playwright + axe accessibility tests in every theme. Use before opening a PR, when the user runs /verify, or when they ask whether the site passes its checks.
+description: Run the portfolio's full check suite — typecheck, lint, production build, and the Playwright + axe accessibility tests in every theme. Use before committing, when the user runs /verify, or when they ask whether the site passes its checks.
 ---
 
 # Verify
 
-The pre-PR gate. Runs every check, reports every failure, **fixes nothing
+The pre-commit gate. Runs every check, reports every failure, **fixes nothing
 silently.**
 
 ## Steps
@@ -47,5 +47,5 @@ which you may apply — but say explicitly that you did, and re-run the step.
 
 ## Known gaps to state, not hide
 
-- `.github/workflows/ci.yml` runs the same four steps on push and PR, but a
+- `.github/workflows/ci.yml` runs the same four steps on every push to `main`, but a
   green local run is not proof that CI is green. Say so when CI has not run.

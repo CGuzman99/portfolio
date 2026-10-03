@@ -49,5 +49,5 @@ came first.
    English, anything you shortened, and anything you could not translate
    without a fact Carlos has not given you.
 
-Carlos approves all Spanish copy. Present it for approval; do not merge it
+Carlos approves all Spanish copy. Present it for approval; do not commit it
 yourself.

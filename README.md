@@ -27,7 +27,7 @@ npm run dev
 | `npm run typecheck` | `next typegen` then `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm run test:e2e` | Playwright + axe, run once per theme. Needs a build first |
-| `npm run verify` | All four of the above, in order — the pre-PR gate |
+| `npm run verify` | All four of the above, in order — the pre-commit gate |
 
 ## Documentation
 

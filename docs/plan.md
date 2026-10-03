@@ -4,7 +4,7 @@ Oct 3, 2026 · @CARLOS ANTONIO GUZMAN JIMENEZ
 
 ## Overview
 
-The portfolio ships as a bilingual Next.js site in 8 milestones, each built in one Claude Code session and merged as one PR. It positions Carlos Guzman as a software engineer for remote full-time and contract roles, with five case studies as proof.
+The portfolio ships as a bilingual Next.js site in 8 milestones, each built in one Claude Code session and committed directly to `main`. It positions Carlos Guzman as a software engineer for remote full-time and contract roles, with five case studies as proof.
 
 - **Audience:** recruiters and hiring managers first; contract clients second.
 - **Headline (EN):** Software engineer building web platforms, desktop tools and AI features.
@@ -34,7 +34,7 @@ All 17 planning items are decided; the table is the source for `docs/decisions.m
 | 13 | Contact | Fields: name, email, company (optional), reason, message; honeypot plus minimum-time check; Resend test sender to your Gmail now, your own domain later; no booking |
 | 14 | Extras | Vercel Web Analytics; `next/og` images; CV PDFs from `/cv` with Playwright |
 | 15 | Claude Code setup | `CLAUDE.md`, decisions and content-sources docs, three skills, hooks, reviewer subagent, shadcn and Playwright MCP |
-| 16 | Workflow | One milestone per branch, PR and session; plan mode first; `/verify` plus reviewer before each PR; Carlos approves all copy |
+| 16 | Workflow | One milestone per session, committed directly to `main` (no branches or PRs); plan mode first; `/verify` plus reviewer before each commit; Carlos approves all copy |
 | 17 | Scope | v1 as listed in Milestones; everything else in Backlog; Claude Code runs in the terminal |
 
 ## Site map and page content
@@ -191,34 +191,34 @@ Milestone 1 commits this setup so every later session starts with the same rules
 
 ## Milestones
 
-Eight milestones in order, each one branch, one Claude Code session and one PR. Every session runs the same loop: start in plan mode, approve the plan, implement, `/verify`, ask the reviewer subagent, open the PR, review it yourself, merge.
+Eight milestones in order, each one Claude Code session committed directly to `main`. Every session runs the same loop: start in plan mode, approve the plan, implement, `/verify`, ask the reviewer subagent, review the changes yourself, then commit and push to `main`.
 
-1. **M1 — Scaffold and agent setup** (`feat/scaffold`)
+1. **M1 — Scaffold and agent setup**
    - Prompt: "Create a Next.js 16 app (TypeScript strict, App Router, Tailwind v4, ESLint, npm) in this empty repo. Init shadcn. Load IBM Plex Serif, Sans and Mono with next/font and add the light and dark tokens from docs/decisions.md to globals.css. Add next-themes with system default. Then create CLAUDE.md, docs/decisions.md, docs/content-sources.md, the three skills, the reviewer subagent, .claude/settings.json with the hooks, the hook scripts, .mcp.json, Playwright config with an axe smoke test, and a GitHub Actions workflow running typecheck, lint, build and Playwright. Plan first and wait for my approval."
    - Done when: `npm run build` passes, CI is green, `/verify` runs, the Vercel preview loads a styled placeholder page.
    - Needs from you: paste this plan's Decisions log, Design system and Technical architecture sections into docs/decisions.md, and its Site map and Case studies sections into docs/content-sources.md (or attach this doc to the session).
-2. **M2 — i18n and site shell** (`feat/shell`)
+2. **M2 — i18n and site shell**
    - Prompt: "Port the next-intl setup from the Fibrant repo (proxy.ts, i18n/request.ts, the locale action) for cookie-based locales without URL prefixes, Accept-Language on first visit, English fallback. Build the header (nav, EN/ES toggle with a DropdownMenu, theme toggle), footer and 404, with every string in messages/en.json and es.json. Toggles must be labelled and announced to screen readers. Plan first."
    - Done when: switching language keeps the URL and refreshes in place; `html lang` follows the cookie; axe passes in 2 locales × 2 themes.
-3. **M3 — Content system and case-study template** (`feat/content`)
+3. **M3 — Content system and case-study template**
    - Prompt: "Set up @next/mdx with rehype-pretty-code and shiki. Create content/projects.ts with the Zod schema from docs/decisions.md and records for the five projects from docs/content-sources.md. Build MDX components (Figure with 'Fig. N' captions, Footnote, CodeExcerpt), the /projects index and /projects/\[slug\] with the sticky metadata column at 1024 px and up. Use /new-case-study to create EN/ES MDX with placeholders only. Fail the build when a record lacks an MDX file. Plan first."
    - Done when: all five case-study pages render with placeholders in both languages; the build fails if an MDX file is removed.
-4. **M4 — Home, About, CV** (`feat/pages`)
+4. **M4 — Home, About, CV**
    - Prompt: "Build Home (headline, supporting line, numbered index of the three featured projects, contract block, contact CTA) and About (photo, bio, location, skills, experience, education, languages, credentials, CV links) using only docs/content-sources.md. Build /cv with a print stylesheet and scripts/cv.ts that renders the EN and ES PDFs into public/cv with Playwright (npm run cv). Plan first."
    - Done when: both PDFs are generated and linked; copy matches content-sources word for word; Spanish passes `/translate-es` review.
    - Needs from you: photo, Upwork URL, GitHub URL.
-5. **M5 — Contact** (`feat/contact`)
+5. **M5 — Contact**
    - Prompt: "Build /contact with react-hook-form, Zod and shadcn Form: name, email, company (optional), reason (Job opportunity, Contract project, Other), message. Server action with the same Zod schema, a honeypot and a 3-second minimum. Send with Resend; until a domain is verified, send from Resend's test sender to CONTACT\_TO. Show success and error states with Sonner. Plan first."
    - Done when: a real message reaches your inbox from the Vercel preview; honeypot and fast submits are rejected; keyboard-only submission works.
    - Needs from you: a Resend account and API key in Vercel env vars.
-6. **M6 — Proof assets** (`feat/assets`)
+6. **M6 — Proof assets**
    - Prompt: "Write scripts/screenshots.ts (npm run shots) to capture fibrant.app (demo account via a git-ignored storage state), expressus.shop, deepspace.com.mx/labs F1 pages and vdcplugins.com at 1440×900 in light and dark. Build the five diagrams as SVG Figure components themed by our tokens: Fibrant analyst tool use, VDC system (add-in, gate, slug registry, Stripe), F1 pipeline, Expressus checkout, Forge Clash flow. Extract the code excerpts I approve. Plan first."
    - Done when: every case study has its hero visual and figures in both themes; images go through next/image.
    - Needs from you: Fibrant demo account; approve each excerpt; F1 metrics exported from `f1_model_runs` (or a read-only key for the session).
-7. **M7 — Case-study copy** (`feat/copy`)
+7. **M7 — Case-study copy**
    - Prompt: "Write the five case studies in English from docs/content-sources.md only: Problem, My role, Approach, Outcome, keeping \[PLACEHOLDER\] where a fact is missing. Then run /translate-es on each. Ask the reviewer subagent to check every claim against content-sources.md. Plan first."
    - Done when: no claim without a source; you've approved EN and ES for all five.
-8. **M8 — SEO, analytics and launch** (`feat/launch`)
+8. **M8 — SEO, analytics and launch**
    - Prompt: "Add per-page metadata, next/og images using the Plex fonts, sitemap and robots from NEXT\_PUBLIC\_SITE\_URL, and Vercel Web Analytics. Add Lighthouse CI against the Vercel preview with a 95 budget for every category. Fix anything under budget. Plan first."
    - Done when: Lighthouse 95+ on all pages in both themes; reviewer subagent passes the whole site; production deploy on the `vercel.app` address.
 

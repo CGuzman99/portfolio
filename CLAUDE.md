@@ -29,7 +29,7 @@ recruiter.
   and nothing about money.
 - **No booking links** in v1. The contact form and the Upwork link are the only
   ways to reach Carlos.
-- Carlos approves every line of EN and ES copy before it merges.
+- Carlos approves every line of EN and ES copy before it is committed.
 - Spanish is natural Mexican Spanish, not translated English. Run
   `/translate-es` and keep "Desarrollador de software" as the title.
 
@@ -85,7 +85,7 @@ Direction C, "Scientific paper" — the full token table and type scale are in
 
 Every interactive control is labelled and announced. Toggles need accessible
 names. The axe suite must pass in both locales and both themes — that is a
-merge gate, not a nice-to-have.
+commit gate, not a nice-to-have.
 
 ## Session setup
 

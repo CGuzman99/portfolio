@@ -6,7 +6,7 @@
  * Gated on the working tree: if no .ts/.tsx/.mdx file is dirty there is
  * nothing a turn could have broken, so it exits immediately. Note this is
  * tree dirtiness, not "edited this turn" — during a milestone, where the whole
- * branch is uncommitted, the checks run on every turn. That is the cost of the
+ * milestone is uncommitted, the checks run on every turn. That is the cost of the
  * gate catching edits made by any means, including shell redirects.
  */
 import { spawnSync } from "node:child_process";

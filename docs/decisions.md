@@ -5,7 +5,7 @@ plan](./plan.md). This file is the source of truth for *how* the site is built:
 the decisions log, the design system and the technical architecture. Facts and
 copy live in [content-sources.md](./content-sources.md) instead.
 
-Change a decision here only when Carlos says so, and say so in the PR.
+Change a decision here only when Carlos says so, and say so in the commit message.
 
 ## Decisions log
 
@@ -28,7 +28,7 @@ All 17 planning items are decided; the table is the source for `docs/decisions.m
 | 13 | Contact | Fields: name, email, company (optional), reason, message; honeypot plus minimum-time check; Resend test sender to your Gmail now, your own domain later; no booking |
 | 14 | Extras | Vercel Web Analytics; `next/og` images; CV PDFs from `/cv` with Playwright |
 | 15 | Claude Code setup | `CLAUDE.md`, decisions and content-sources docs, three skills, hooks, reviewer subagent, shadcn and Playwright MCP |
-| 16 | Workflow | One milestone per branch, PR and session; plan mode first; `/verify` plus reviewer before each PR; Carlos approves all copy |
+| 16 | Workflow | One milestone per session, committed directly to `main` (no branches or PRs); plan mode first; `/verify` plus reviewer before each commit; Carlos approves all copy |
 | 17 | Scope | v1 as listed in Milestones; everything else in Backlog; Claude Code runs in the terminal |
 
 ## Design system
