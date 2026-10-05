@@ -17,6 +17,19 @@ npm ci
 npm run dev
 ```
 
+## Environment
+
+Set these in `.env.local` locally and in Vercel (Preview and Production). The
+build needs none of them; the contact form fails politely without them.
+
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | The site's public URL |
+| `RESEND_API_KEY` | Resend API key for the contact form |
+| `CONTACT_TO` | Where contact messages go. With Resend's test sender this must be the Resend account's own email |
+| `RESEND_FROM` | Sender on a verified domain, once there is one; defaults to Resend's test sender |
+| `CONTACT_DRY_RUN` | `1` logs messages instead of sending them. Set by the Playwright config; ignored on Vercel |
+
 ## Scripts
 
 | Script | What it does |

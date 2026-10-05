@@ -5,7 +5,8 @@
     "notFoundTitle": "Page not found",
     "projectsTitle": "Projects",
     "aboutTitle": "About",
-    "cvTitle": "CV"
+    "cvTitle": "CV",
+    "contactTitle": "Contact"
   },
   "skipLink": "Skip to content",
   "nav": {
@@ -166,5 +167,37 @@
   "mdx": {
     "figure": "Fig. {number}",
     "footnotes": "Footnotes"
+  },
+  "contact": {
+    "label": "§ 04",
+    "title": "Contact",
+    "intro": "Tell me about the role or the project, and I'll reply by email.",
+    "formLabel": "Contact form",
+    "name": "Name",
+    "email": "Email",
+    "company": "Company (optional)",
+    "reason": "Reason",
+    "reasonPlaceholder": "Choose one",
+    "reasons": {
+      "job": "Job opportunity",
+      "contract": "Contract project",
+      "other": "Other"
+    },
+    "message": "Message",
+    "honeypot": "Leave this field empty",
+    "submit": "Send message",
+    "sending": "Sending…",
+    "sent": "Message sent. Thanks, I'll get back to you by email.",
+    "tooFast": "That was quick. Wait a few seconds and send it again.",
+    "failed": "The message couldn't be sent. Try again, or reach me on LinkedIn or Upwork.",
+    "errors": {
+      "required": "This field is required.",
+      "email": "Enter a valid email address.",
+      "reason": "Choose a reason.",
+      "tooLong": "Use {max} characters or fewer."
+    },
+    "profilesTitle": "Elsewhere",
+    "notifications": "Notifications",
+    "closeNotification": "Close notification"
   }
 }

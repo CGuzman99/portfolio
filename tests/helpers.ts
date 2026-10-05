@@ -42,3 +42,38 @@ export const PROJECT_SLUGS = [
   "expressus-cafe",
   "forge-clash-insight",
 ] as const;
+
+/** The contact form's labels and outcomes, as messages/{en,es}.json word them. */
+export const CONTACT_COPY = {
+  en: {
+    name: "Name",
+    email: "Email",
+    company: "Company (optional)",
+    reason: "Reason",
+    message: "Message",
+    submit: "Send message",
+    job: "Job opportunity",
+    required: "This field is required.",
+    reasonError: "Choose a reason.",
+    sent: "Message sent. Thanks, I'll get back to you by email.",
+    tooFast: "That was quick. Wait a few seconds and send it again.",
+    failed:
+      "The message couldn't be sent. Try again, or reach me on LinkedIn or Upwork.",
+  },
+  es: {
+    name: "Nombre",
+    email: "Correo electrónico",
+    company: "Empresa (opcional)",
+    reason: "Motivo",
+    message: "Mensaje",
+    submit: "Enviar mensaje",
+    job: "Oferta de trabajo",
+    required: "Este campo es obligatorio.",
+    reasonError: "Elige un motivo.",
+    sent: "Mensaje enviado. Gracias, te respondo por correo.",
+    tooFast: "Fue muy rápido. Espera unos segundos y vuelve a enviarlo.",
+    failed:
+      "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por LinkedIn o Upwork.",
+  },
+} as const;
+

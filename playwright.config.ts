@@ -37,5 +37,8 @@ export default defineConfig({
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
+    // The contact action logs instead of calling Resend, so e2e never sends
+    // real email. app/actions/contact.ts ignores the flag on Vercel.
+    env: { CONTACT_DRY_RUN: "1" },
   },
 });

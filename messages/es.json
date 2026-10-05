@@ -5,7 +5,8 @@
     "notFoundTitle": "Página no encontrada",
     "projectsTitle": "Proyectos",
     "aboutTitle": "Sobre mí",
-    "cvTitle": "CV"
+    "cvTitle": "CV",
+    "contactTitle": "Contacto"
   },
   "skipLink": "Saltar al contenido",
   "nav": {
@@ -166,5 +167,37 @@
   "mdx": {
     "figure": "Fig. {number}",
     "footnotes": "Notas"
+  },
+  "contact": {
+    "label": "§ 04",
+    "title": "Contacto",
+    "intro": "Cuéntame sobre el puesto o el proyecto y te respondo por correo.",
+    "formLabel": "Formulario de contacto",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "company": "Empresa (opcional)",
+    "reason": "Motivo",
+    "reasonPlaceholder": "Elige una opción",
+    "reasons": {
+      "job": "Oferta de trabajo",
+      "contract": "Proyecto por contrato",
+      "other": "Otro"
+    },
+    "message": "Mensaje",
+    "honeypot": "Deja este campo vacío",
+    "submit": "Enviar mensaje",
+    "sending": "Enviando…",
+    "sent": "Mensaje enviado. Gracias, te respondo por correo.",
+    "tooFast": "Fue muy rápido. Espera unos segundos y vuelve a enviarlo.",
+    "failed": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por LinkedIn o Upwork.",
+    "errors": {
+      "required": "Este campo es obligatorio.",
+      "email": "Escribe un correo electrónico válido.",
+      "reason": "Elige un motivo.",
+      "tooLong": "Máximo {max} caracteres."
+    },
+    "profilesTitle": "Otros perfiles",
+    "notifications": "Notificaciones",
+    "closeNotification": "Cerrar notificación"
   }
 }

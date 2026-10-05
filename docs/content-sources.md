@@ -128,3 +128,26 @@ UtahBIM's own time-savings claims on vdcplugins.com stay out of the case study u
 | F1 Forecast Lab | ML/Data, AI | DeepSpace |
 | Expressus Café | E-commerce | DeepSpace |
 | Forge Clash Insight | Construction tech, AI | UtahBIM |
+
+## Contact page copy (approved by Carlos, M5)
+
+UI strings only; none states a fact. The Spanish passed `/translate-es`.
+
+| English | Spanish |
+| --- | --- |
+| Contact | Contacto |
+| Tell me about the role or the project, and I'll reply by email. | Cuéntame sobre el puesto o el proyecto y te respondo por correo. |
+| Name · Email · Company (optional) · Reason · Message | Nombre · Correo electrónico · Empresa (opcional) · Motivo · Mensaje |
+| Choose one | Elige una opción |
+| Job opportunity · Contract project · Other | Oferta de trabajo · Proyecto por contrato · Otro |
+| Leave this field empty (honeypot, hidden) | Deja este campo vacío |
+| Send message · Sending… | Enviar mensaje · Enviando… |
+| Message sent. Thanks, I'll get back to you by email. | Mensaje enviado. Gracias, te respondo por correo. |
+| That was quick. Wait a few seconds and send it again. | Fue muy rápido. Espera unos segundos y vuelve a enviarlo. |
+| The message couldn't be sent. Try again, or reach me on LinkedIn or Upwork. | No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por LinkedIn o Upwork. |
+| This field is required. | Este campo es obligatorio. |
+| Enter a valid email address. | Escribe un correo electrónico válido. |
+| Choose a reason. | Elige un motivo. |
+| Use {max} characters or fewer. | Máximo {max} caracteres. |
+| Elsewhere | Otros perfiles |
+| Notifications · Close notification (screen-reader names) | Notificaciones · Cerrar notificación |
