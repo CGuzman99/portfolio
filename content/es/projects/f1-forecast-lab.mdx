@@ -1,6 +1,10 @@
 export const meta = {
   title: "F1 Forecast Lab",
   summary: "Un pipeline de machine learning que pronostica la clasificación y la carrera de la Fórmula 1, con un dashboard que compara lo pronosticado con lo que pasó.",
+  hero: {
+    caption: "F1 Forecast en DeepSpace Labs: una página por evento con pronósticos.",
+    alt: "Índice de F1 Forecast en deepspace.com.mx, con los eventos de 2026 que tienen pronósticos.",
+  },
 };
 
 ## Problema
@@ -17,6 +21,14 @@ Fui el desarrollador principal de F1 Forecast Lab, un proyecto de DeepSpace.
 - **Modelos.** Regresión logística, LightGBM y XGBoost, con calibración, comparados en backtests por evento y por temporada.
 - **Operación.** El CLI `f1-weekend` dirige cada corrida y los resultados se sincronizan con Supabase.
 - **Dashboard.** Un dashboard en Next.js muestra lo pronosticado frente a los resultados reales.
+
+<Figure number={2} caption="De los datos de FastF1 al dashboard.">
+  <F1PipelineFigure />
+</Figure>
+
+<Figure number={3} caption="La vista del dashboard que compara lo pronosticado con el resultado real de una carrera.">
+  <Screenshot src="/projects/f1-forecast-lab/event" alt="Resultados del Gran Premio de Azerbaiyán 2026: la probabilidad pronosticada de que cada piloto sume puntos junto a los puntos que realmente sumó." />
+</Figure>
 
 ## Resultado
 

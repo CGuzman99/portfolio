@@ -36,6 +36,11 @@ const modules = {
 const MetaSchema = z.object({
   title: z.string().min(1),
   summary: z.string().min(1),
+  /** Fig. 1's caption, and the alt text a screenshot hero needs. */
+  hero: z.object({
+    caption: z.string().min(1),
+    alt: z.string().min(1).optional(),
+  }),
 });
 
 export type CaseStudyMeta = z.infer<typeof MetaSchema>;

@@ -2,6 +2,14 @@ import type { MDXComponents } from "mdx/types";
 import type { ComponentProps } from "react";
 import { CodeExcerpt } from "@/components/case-study/code-excerpt";
 import { Figure } from "@/components/case-study/figure";
+import { Screenshot } from "@/components/case-study/screenshot";
+import {
+  ExpressusCheckoutFigure,
+  F1PipelineFigure,
+  FibrantAnalystFigure,
+  ForgeClashFlowFigure,
+  VdcSystemFigure,
+} from "@/components/figures";
 import {
   FOOTNOTE_LABEL_ID,
   FootnotesHeading,
@@ -31,6 +39,12 @@ const components = {
   pre: (props: ComponentProps<"pre">) => <pre tabIndex={0} {...props} />,
   Figure,
   CodeExcerpt,
+  Screenshot,
+  ExpressusCheckoutFigure,
+  F1PipelineFigure,
+  FibrantAnalystFigure,
+  ForgeClashFlowFigure,
+  VdcSystemFigure,
 } satisfies MDXComponents;
 
 export function useMDXComponents(): MDXComponents {

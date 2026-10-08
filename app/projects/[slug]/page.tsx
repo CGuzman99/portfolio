@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
-import { HeroPlaceholder } from "@/components/case-study/hero-placeholder";
+import { Hero } from "@/components/case-study/hero";
 import { NextProject } from "@/components/case-study/next-project";
 import { ProjectMeta } from "@/components/case-study/project-meta";
 import { getCaseStudy } from "@/content/mdx";
@@ -58,7 +58,7 @@ export default async function CaseStudyPage({
           <ProjectMeta project={project} locale={locale} />
         </div>
         <div className="max-w-text lg:col-start-2">
-          <HeroPlaceholder />
+          <Hero project={project} hero={meta.hero} />
           <div className="prose-paper mt-8">
             <Content />
           </div>

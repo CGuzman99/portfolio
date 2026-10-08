@@ -1,6 +1,10 @@
 export const meta = {
   title: "Fibrant",
   summary: "Una plataforma de seguimiento de inversiones multimoneda con un analista de IA multimodelo, desarrollada como proyecto de DeepSpace.",
+  hero: {
+    caption: "El dashboard de Fibrant, con una cuenta de demostración y datos ficticios.",
+    alt: "Dashboard de Fibrant del portafolio de demostración US Growth: valor total, ganancias, rendimientos y una gráfica del valor del portafolio en el tiempo.",
+  },
 };
 
 ## Problema
@@ -16,6 +20,14 @@ Soy el desarrollador principal de Fibrant, un proyecto de DeepSpace. Mi trabajo 
 - **Analista de IA.** Tú eliges el modelo: Claude, ChatGPT o Gemini. El analista consulta el portafolio con tool use en lugar de adivinar, guarda una memoria por portafolio y usa un system prompt estático pensado para aprovechar el caché. El uso se mide en créditos según el plan.
 - **Rendimientos.** Los rendimientos ponderados por tiempo y la XIRR se calculan con `decimal.js`, para que las cuentas de dinero no arrastren errores de punto flotante, y los montos se convierten entre USD y MXN.
 - **Acceso.** El row-level security de Supabase define quién ve qué, incluidos los portafolios compartidos con otros usuarios.
+
+<Figure number={2} caption="Cómo responde el analista: el modelo que eliges consulta el portafolio con tool use.">
+  <FibrantAnalystFigure />
+</Figure>
+
+<Figure number={3} caption="El analista respondiendo una pregunta de chequeo general sobre el portafolio de demostración.">
+  <Screenshot src="/projects/fibrant/analyst" alt="Una conversación con el analista de IA de Fibrant: una solicitud de chequeo general del portafolio US Growth, respondida con una tabla de valor de mercado, efectivo, capital invertido, ganancias, dividendos y posiciones abiertas." />
+</Figure>
 
 ## Resultado
 

@@ -1,6 +1,9 @@
 export const meta = {
   title: "VDC Plugins for Revit",
   summary: "Una suite comercial de unos 10 plugins para Revit, pensada para equipos de construcción, y el sistema de licencias y suscripciones que la sostiene.",
+  hero: {
+    caption: "La suite de add-ins y su lado web: cada herramienta pasa por el control de licencias.",
+  },
 };
 
 ## Problema
@@ -17,6 +20,39 @@ Soy el desarrollador principal de la suite de add-ins y colaboro en la app de su
 - **Control de licencias.** Cada herramienta pasa por un control compartido, por herramienta, que bloquea el acceso a menos que se confirme. Las herramientas de otro desarrollador se integraron a la misma estructura y al mismo control, con correcciones en el camino.
 - **Migraciones y reglas.** La lógica que vivía en Dynamo y Python se migró a C#. Las validaciones de pendiente siguen la tabla 704.1 del IPC, con la tolerancia documentada.
 - **Lado web.** Cada plugin tiene un slug en un registro. Stripe maneja las suscripciones de organización y personales, y los webhooks siguen el ciclo de vida de cada suscripción por su ID, lo que cerró huecos por donde se filtraba el acceso. La tienda tiene un flujo de prueba gratuita y descargas del instalador, y se despliega con Docker y Prisma.
+
+<Figure number={2} caption="La tienda en línea de vdcplugins.com, donde empieza la prueba gratuita.">
+  <Screenshot src="/projects/vdc-plugins/storefront" alt="Página de inicio de vdcplugins.com, con botones para ver los plugins y empezar una prueba gratuita." />
+</Figure>
+
+<CodeExcerpt title="GatedExternalCommand.cs" caption="El control compartido por el que pasa cada comando: cualquier error inesperado bloquea la herramienta.">
+
+```cs
+public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+{
+    AccessDecision decision;
+    try
+    {
+        decision = TheToolkitGate.Evaluate(AppSlug, commandData.Application.MainWindowHandle);
+    }
+    catch (Exception ex)
+    {
+        // Anything unexpected inside the gate blocks the command (fail closed).
+        decision = AccessDecision.Blocked("The license check failed unexpectedly.\n\n" + ex.Message);
+    }
+
+    if (decision.Outcome != GateOutcome.Allowed)
+    {
+        TheToolkitGate.ExplainDecision(decision, CommandDisplayName);
+        message = decision.ShortSummary(CommandDisplayName);
+        return Result.Cancelled;
+    }
+
+    return ExecuteCommand(commandData, ref message, elements);
+}
+```
+
+</CodeExcerpt>
 
 ## Resultado
 

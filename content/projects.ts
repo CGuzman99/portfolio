@@ -32,8 +32,10 @@ export const ProjectSchema = z.object({
   tags: z.array(z.enum(TAGS)).min(1),
   links: z.array(link),
   /**
-   * The case study's lead visual, produced in M6. A screenshot is a path under
-   * public/; a figure names its SVG component in components/figures/.
+   * The case study's lead visual (M6). A screenshot is a base path under
+   * public/ that `npm run shots` fills with `<src>.light.png` and
+   * `<src>.dark.png`; a figure names its SVG component in
+   * components/figures/index.ts.
    */
   hero: z.object({
     kind: z.enum(["screenshot", "figure"]),
@@ -80,7 +82,7 @@ const records = [
     ],
     tags: ["ai", "finance"],
     links: [{ label: "fibrant.app", url: "https://www.fibrant.app" }],
-    hero: { kind: "screenshot", src: "/projects/fibrant/hero.png" },
+    hero: { kind: "screenshot", src: "/projects/fibrant/hero" },
   },
   {
     slug: "vdc-plugins",
@@ -142,7 +144,7 @@ const records = [
     ],
     tags: ["ml-data", "ai"],
     links: [{ label: "deepspace.com.mx", url: "https://www.deepspace.com.mx/" }],
-    hero: { kind: "screenshot", src: "/projects/f1-forecast-lab/hero.png" },
+    hero: { kind: "screenshot", src: "/projects/f1-forecast-lab/hero" },
   },
   {
     slug: "expressus-cafe",
@@ -168,7 +170,7 @@ const records = [
     ],
     tags: ["ecommerce"],
     links: [{ label: "expressus.shop", url: "https://www.expressus.shop/" }],
-    hero: { kind: "screenshot", src: "/projects/expressus-cafe/hero.png" },
+    hero: { kind: "screenshot", src: "/projects/expressus-cafe/hero" },
   },
   {
     slug: "forge-clash-insight",

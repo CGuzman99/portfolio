@@ -232,9 +232,9 @@ These are the inputs only you can provide, listed in the order the milestones ne
 - [ ] Send your GitHub profile URL (M4)
 - [ ] Add a photo, square, at least 800 px (M4)
 - [ ] Create a Resend account and add `RESEND_API_KEY` and `CONTACT_TO` in Vercel (M5)
-- [ ] Create the Fibrant demo account with made-up data (M6)
-- [ ] Export the F1 model-run metrics, or provide a read-only key for that session (M6)
-- [ ] Approve each code excerpt, including the UtahBIM ones (M6)
+- [x] Create the Fibrant demo account with made-up data (M6) — local, us-demo@example.test, portfolio "US Growth"
+- [ ] Export the F1 model-run metrics, or provide a read-only key for that session (deferred from M6 to M7)
+- [x] Approve each code excerpt, including the UtahBIM ones (M6)
 - [ ] Approve EN and ES copy for every page (M4, M7)
 - [ ] Buy the domain, verify it in Resend, set `NEXT_PUBLIC_SITE_URL` and `RESEND_FROM` (after launch)
 - [ ] Update LinkedIn from the finished About page (after launch)

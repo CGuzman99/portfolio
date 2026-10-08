@@ -151,3 +151,41 @@ UI strings only; none states a fact. The Spanish passed `/translate-es`.
 | Use {max} characters or fewer. | Máximo {max} caracteres. |
 | Elsewhere | Otros perfiles |
 | Notifications · Close notification (screen-reader names) | Notificaciones · Cerrar notificación |
+
+## Proof assets (approved by Carlos, M6)
+
+The figure captions, screenshot alt text and diagram labels, in both
+languages, live where the site reads them: each MDX file's `meta.hero` and
+`<Figure>` / `<CodeExcerpt>` blocks in `content/{en,es}/projects/`, and
+`figures` in `messages/{en,es}.json`. Carlos approved all of them as written
+in M6; they state nothing beyond the case-study facts above, plus these:
+
+- **Fibrant screenshots** use a demo account with made-up data; captions say so.
+- **Expressus checkout flow (confirmed):** guest cart → Skydropx shipping quote
+  → checkout totals in a transactional database function → Stripe Checkout →
+  signed webhook → stock change in a transactional database function.
+- **VDC system (confirmed):** storefront (free trial, installer download) →
+  Revit add-in → shared licensing gate → the tool's slug in the plugin
+  registry, checked against Stripe organisation and personal subscriptions,
+  which webhooks keep current by subscription ID.
+- **Fibrant analyst flow (confirmed):** question → model selector (Claude,
+  ChatGPT, Gemini; usage metered in credits by tier) → static, cache-friendly
+  system prompt and per-portfolio memory → tool use, which reads the portfolio
+  from Supabase behind row-level security → answer.
+- **F1 pipeline (confirmed):** FastF1 ingestion → leakage checks → logistic,
+  LightGBM and XGBoost with calibration → event- and season-level backtests →
+  `f1-weekend` operator CLI → Supabase sync → Next.js predicted-vs-actual
+  dashboard. The forecast pages live under DeepSpace Labs on deepspace.com.mx.
+- **Forge Clash flow (confirmed):** Autodesk (APS/ACC) or Procore sign-in →
+  model processing → GJK collision detection → severity scoring, which feeds
+  both the Three.js viewer and the LLM analysis through n8n.
+- **Fibrant analyst screenshot:** the demo account (Pro tier) answering a
+  seeded health-check question; same made-up data as the dashboard.
+- **VDC storefront screenshot:** kept with the site's own stat strip in
+  frame, by Carlos's decision (M6).
+- **Code excerpts (approved):** `GatedExternalCommand.Execute` from the
+  VDCPlugins add-in (the fail-closed gate), trimmed; `gjkCollisionDetection`
+  from Forge Clash Insight's `gjk-collision.ts`, unchanged.
+- **F1 event screenshot:** the 2026 Azerbaijan Grand Prix race page on
+  deepspace.com.mx, predicted points chance against points scored. No metric
+  is quoted in copy; backtest metrics stay [PLACEHOLDER] until M7.

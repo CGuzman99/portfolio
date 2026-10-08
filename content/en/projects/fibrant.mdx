@@ -1,6 +1,10 @@
 export const meta = {
   title: "Fibrant",
   summary: "A multi-currency investment tracker with a multi-model AI analyst, built as a DeepSpace project.",
+  hero: {
+    caption: "The Fibrant dashboard, shown with a demo account and made-up data.",
+    alt: "Fibrant dashboard for the demo portfolio US Growth: total value, gains, returns and a chart of portfolio value over time.",
+  },
 };
 
 ## Problem
@@ -16,6 +20,14 @@ I'm the main developer of Fibrant, a DeepSpace project. My work spans the databa
 - **AI analyst.** You choose the model: Claude, ChatGPT or Gemini. The analyst reads the portfolio through tool use instead of guessing, keeps a memory per portfolio, and runs on a static system prompt designed to stay cache-friendly. Usage is metered in credits by tier.
 - **Returns.** Time-weighted returns and XIRR are calculated with `decimal.js`, so money math doesn't pick up floating-point error, and values convert between USD and MXN.
 - **Access.** Supabase row-level security decides who sees what, including portfolios shared with other users.
+
+<Figure number={2} caption="How the analyst answers: the model you choose reads the portfolio through tool use.">
+  <FibrantAnalystFigure />
+</Figure>
+
+<Figure number={3} caption="The analyst answering a health-check question about the demo portfolio.">
+  <Screenshot src="/projects/fibrant/analyst" alt="A Fibrant AI analyst conversation: a request for a health check of the US Growth portfolio, answered with a table of market value, cash, invested capital, gains, dividends and open positions." />
+</Figure>
 
 ## Outcome
 

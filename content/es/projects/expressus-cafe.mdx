@@ -1,6 +1,10 @@
 export const meta = {
   title: "Expressus Café",
   summary: "Una tienda en línea con pago por Stripe y cotización de envíos, en producción y recibiendo pedidos.",
+  hero: {
+    caption: "La tienda en línea de Expressus Café en expressus.shop.",
+    alt: "Página de inicio de expressus.shop, con botones para comprar café y conocer los productos.",
+  },
 };
 
 ## Problema
@@ -17,6 +21,10 @@ Soy el desarrollador principal de Expressus Café, un proyecto de DeepSpace.
 - **Integridad del checkout.** Los totales y los cambios de inventario corren dentro de funciones transaccionales de la base de datos, así que un pedido se completa entero o no se completa.
 - **Carritos sin cuenta.** Puedes comprar sin registrarte; el carrito vive en una cookie HTTP-only.
 - **Pagos y envíos.** Stripe Checkout con webhooks firmados y cotizaciones de envío de Skydropx.
+
+<Figure number={2} caption="Checkout: los totales y los cambios de inventario corren en funciones transaccionales de la base de datos.">
+  <ExpressusCheckoutFigure />
+</Figure>
 
 ## Resultado
 

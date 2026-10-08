@@ -50,6 +50,29 @@ for (const locale of ["en", "es"] as const) {
   });
 }
 
+for (const slug of PROJECT_SLUGS) {
+  // Runs once per theme project, so each theme's screenshot is checked.
+  test(`/projects/${slug} shows its hero as Fig. 1`, async ({ page }) => {
+    await page.goto(`/projects/${slug}`);
+    const hero = page.getByRole("figure").first();
+    await expect(hero).toContainText("Fig. 1 —");
+
+    const image = hero.locator("img:visible");
+    if ((await image.count()) > 0) {
+      // A screenshot: the visible theme's file, through next/image, loaded.
+      await expect(image).toHaveCount(1);
+      await expect(image).toHaveAttribute("src", /^\/_next\/image\?url=/);
+      await expect(image).toHaveAttribute("alt", /\S/);
+      await expect
+        .poll(() => image.evaluate((img: HTMLImageElement) => img.naturalWidth))
+        .toBeGreaterThan(0);
+    } else {
+      // A diagram: one SVG image with an accessible name.
+      await expect(hero.getByRole("img")).toHaveAccessibleName(/\S/);
+    }
+  });
+}
+
 test("next project wraps from the last case study to the first", async ({
   page,
 }) => {

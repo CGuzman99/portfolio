@@ -1,6 +1,10 @@
 export const meta = {
   title: "Expressus Café",
   summary: "An online store with Stripe checkout and shipping quotes, live and taking orders.",
+  hero: {
+    caption: "The Expressus Café storefront at expressus.shop.",
+    alt: "The expressus.shop home page, with buttons to shop for coffee and see the products.",
+  },
 };
 
 ## Problem
@@ -17,6 +21,10 @@ I'm the main developer of Expressus Café, a DeepSpace project.
 - **Checkout integrity.** Totals and stock changes run inside transactional database functions, so an order either completes in full or not at all.
 - **Guest carts.** You can shop without an account; the cart lives on an HTTP-only cookie.
 - **Payments and shipping.** Stripe Checkout with signed webhooks, and shipping quotes from Skydropx.
+
+<Figure number={2} caption="Checkout: totals and stock changes run in transactional database functions.">
+  <ExpressusCheckoutFigure />
+</Figure>
 
 ## Outcome
 

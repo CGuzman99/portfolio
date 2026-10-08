@@ -160,7 +160,6 @@
     "stack": "Stack",
     "client": "Client",
     "links": "Links",
-    "heroPending": "Hero visual: [PLACEHOLDER]",
     "walkthrough": "Code walkthrough available on request.",
     "next": "Next project"
   },
@@ -199,5 +198,147 @@
     "profilesTitle": "Elsewhere",
     "notifications": "Notifications",
     "closeNotification": "Close notification"
+  },
+  "figures": {
+    "fibrantAnalyst": {
+      "title": "The AI analyst's tool use",
+      "description": "A question goes to the model you choose: Claude, ChatGPT or Gemini, with usage metered in credits by tier. The model runs on a static, cache-friendly system prompt and the portfolio's own memory, and reads the portfolio through tool use, from Supabase behind row-level security, before it answers.",
+      "question": {
+        "label": "Your question",
+        "note": "credits by tier"
+      },
+      "model": {
+        "label": "Model selector",
+        "note": "Claude · ChatGPT · Gemini"
+      },
+      "prompt": {
+        "label": "System prompt",
+        "note": "static, cache-friendly"
+      },
+      "memory": {
+        "label": "Memory",
+        "note": "one per portfolio"
+      },
+      "tools": {
+        "label": "Tool use",
+        "note": "reads the portfolio"
+      },
+      "data": {
+        "label": "Supabase",
+        "note": "row-level security"
+      },
+      "answer": {
+        "label": "Answer"
+      }
+    },
+    "vdcSystem": {
+      "title": "VDC Plugins: add-in, licensing gate and subscriptions",
+      "description": "The storefront offers a free trial and the installer download. Every Revit add-in runs a shared per-tool licensing gate that blocks unless access is confirmed. The gate checks the tool's slug in the plugin registry against Stripe organisation and personal subscriptions, which webhooks keep current by subscription ID.",
+      "storefront": {
+        "label": "Storefront",
+        "note": "free trial · installer download"
+      },
+      "addin": {
+        "label": "Revit add-in",
+        "note": "C# · .NET 8 · Revit 2025–2026"
+      },
+      "gate": {
+        "label": "Licensing gate",
+        "note": "blocks unless access is confirmed"
+      },
+      "registry": {
+        "label": "Plugin slug registry",
+        "note": "one slug per tool"
+      },
+      "subscriptions": {
+        "label": "Stripe subscriptions",
+        "note": "organisation and personal"
+      },
+      "webhooks": {
+        "label": "Stripe webhooks",
+        "note": "lifecycle by subscription ID"
+      }
+    },
+    "f1Pipeline": {
+      "title": "The F1 Forecast Lab pipeline",
+      "description": "Race data comes in through FastF1 and passes leakage checks. Logistic regression, LightGBM and XGBoost models, with calibration, are compared on event- and season-level backtests. The f1-weekend operator CLI and a Supabase sync feed a Next.js dashboard of predicted against actual results.",
+      "ingestion": {
+        "label": "FastF1 ingestion",
+        "note": "Python · uv monorepo"
+      },
+      "leakage": {
+        "label": "Leakage checks"
+      },
+      "models": {
+        "label": "Models",
+        "note": "logistic · LightGBM · XGBoost, calibrated"
+      },
+      "backtests": {
+        "label": "Backtests",
+        "note": "event- and season-level"
+      },
+      "cli": {
+        "label": "f1-weekend",
+        "note": "operator CLI"
+      },
+      "sync": {
+        "label": "Supabase sync"
+      },
+      "dashboard": {
+        "label": "Dashboard",
+        "note": "Next.js · predicted vs actual"
+      }
+    },
+    "expressusCheckout": {
+      "title": "Expressus Café checkout",
+      "description": "A guest's cart lives on an HTTP-only cookie. Skydropx quotes the shipping, a transactional database function calculates the checkout totals, and the customer pays through Stripe Checkout. A signed webhook then leads to the stock change, also in a transactional database function.",
+      "cart": {
+        "label": "Guest cart",
+        "note": "HTTP-only cookie"
+      },
+      "shipping": {
+        "label": "Shipping quote",
+        "note": "Skydropx"
+      },
+      "totals": {
+        "label": "Checkout totals",
+        "note": "transactional database function"
+      },
+      "checkout": {
+        "label": "Stripe Checkout"
+      },
+      "webhook": {
+        "label": "Signed webhook"
+      },
+      "stock": {
+        "label": "Stock change",
+        "note": "transactional database function"
+      }
+    },
+    "forgeClashFlow": {
+      "title": "Forge Clash Insight flow",
+      "description": "The user signs in with Autodesk (APS/ACC) or Procore. Models are processed, GJK collision detection finds the clashes, and each one gets a severity score. The results go to a Three.js viewer and to LLM analysis through n8n.",
+      "signin": {
+        "label": "Sign-in",
+        "note": "Autodesk APS/ACC · Procore"
+      },
+      "processing": {
+        "label": "Model processing"
+      },
+      "gjk": {
+        "label": "GJK collision detection"
+      },
+      "severity": {
+        "label": "Severity scoring"
+      },
+      "viewer": {
+        "label": "3D viewer",
+        "note": "Three.js"
+      },
+      "llm": {
+        "label": "LLM analysis",
+        "note": "n8n"
+      }
+    }
   }
 }

@@ -1,6 +1,9 @@
 export const meta = {
   title: "Forge Clash Insight",
   summary: "A 3D clash-detection prototype for UtahBIM: GJK collision checks, severity scoring and LLM analysis, in a Three.js viewer.",
+  hero: {
+    caption: "From sign-in to scored clashes.",
+  },
 };
 
 ## Problem
@@ -17,6 +20,58 @@ I was the main developer, building it for UtahBIM.
 - **Sign-in.** Users sign in with Autodesk (APS/ACC) or Procore.
 - **Viewer.** Models are processed and shown in a Three.js viewer.
 - **Analysis.** LLM analysis of the clashes runs through n8n.
+
+<CodeExcerpt title="gjk-collision.ts" caption="The GJK main loop: it grows a simplex in the Minkowski difference until it contains the origin or can't.">
+
+```ts
+/**
+ * Gilbert-Johnson-Keerthi (GJK) Distance Algorithm
+ * Returns true if the two meshes are colliding
+ */
+export function gjkCollisionDetection(meshA: THREE.Mesh, meshB: THREE.Mesh, maxIterations = 1000): boolean {
+  // Convert meshes to convex hulls
+  const hullA = meshToConvexHull(meshA);
+  const hullB = meshToConvexHull(meshB);
+
+  // Step 1: Pick an arbitrary starting direction
+  const direction = new THREE.Vector3(1, 0, 0);
+
+  // Step 2: Get first point in Minkowski difference
+  const simplex = new Simplex();
+  const initialPoint = supportMinkowski(hullA, hullB, direction);
+  simplex.push(initialPoint);
+
+  // Step 4: Choose direction towards origin
+  direction.copy(initialPoint).negate();
+
+  // Main loop
+  for (let i = 0; i < maxIterations; i++) {
+    // Step 5: Get a new point in the direction
+    const newPoint = supportMinkowski(hullA, hullB, direction);
+
+    // Step 6: Check if we passed the origin
+    if (newPoint.dot(direction) <= 0) {
+      // Didn't pass the origin, no collision
+      return false;
+    }
+
+    // Step 7: Add new point to simplex
+    simplex.push(newPoint);
+
+    // Step 8 & 9: Process simplex
+    if (processSimplex(simplex, direction)) {
+      // Origin is contained in simplex, collision detected
+      return true;
+    }
+  }
+
+  // Max iterations reached (shouldn't happen normally)
+  console.warn('GJK: Maximum iterations reached: ' + maxIterations);
+  return false;
+}
+```
+
+</CodeExcerpt>
 
 ## Outcome
 

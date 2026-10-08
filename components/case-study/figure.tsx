@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 /**
  * A captioned figure in the paper's style: "Fig. N — caption". Numbers are
@@ -9,16 +10,18 @@ import type { ReactNode } from "react";
 export async function Figure({
   number,
   caption,
+  className,
   children,
 }: {
   number: number;
   caption: string;
+  className?: string;
   children: ReactNode;
 }) {
   const t = await getTranslations("mdx");
 
   return (
-    <figure className="my-8">
+    <figure className={cn("my-8", className)}>
       <div className="overflow-hidden rounded-sm border border-border">
         {children}
       </div>

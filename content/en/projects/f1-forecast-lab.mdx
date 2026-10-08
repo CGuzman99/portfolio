@@ -1,6 +1,10 @@
 export const meta = {
   title: "F1 Forecast Lab",
   summary: "An ML pipeline that forecasts Formula 1 qualifying and race results, with a dashboard that compares predictions to what happened.",
+  hero: {
+    caption: "F1 Forecast on DeepSpace Labs: one page per event with predictions.",
+    alt: "The F1 Forecast index on deepspace.com.mx, listing 2026 events with predictions.",
+  },
 };
 
 ## Problem
@@ -17,6 +21,14 @@ I was the main developer of F1 Forecast Lab, a DeepSpace project.
 - **Models.** Logistic regression, LightGBM and XGBoost, with calibration, compared on backtests at both event and season level.
 - **Operations.** The `f1-weekend` operator CLI drives each run, and results sync to Supabase.
 - **Dashboard.** A Next.js dashboard shows predicted against actual results.
+
+<Figure number={2} caption="From FastF1 data to the dashboard.">
+  <F1PipelineFigure />
+</Figure>
+
+<Figure number={3} caption="The dashboard's predicted-against-actual view for one race.">
+  <Screenshot src="/projects/f1-forecast-lab/event" alt="Race results for the 2026 Azerbaijan Grand Prix: each driver's predicted chance of scoring points next to the points actually scored." />
+</Figure>
 
 ## Outcome
 

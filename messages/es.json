@@ -160,7 +160,6 @@
     "stack": "Stack",
     "client": "Cliente",
     "links": "Enlaces",
-    "heroPending": "Imagen principal: [PLACEHOLDER]",
     "walkthrough": "Puedo mostrarte el código si me lo pides.",
     "next": "Siguiente proyecto"
   },
@@ -199,5 +198,147 @@
     "profilesTitle": "Otros perfiles",
     "notifications": "Notificaciones",
     "closeNotification": "Cerrar notificación"
+  },
+  "figures": {
+    "fibrantAnalyst": {
+      "title": "Tool use del analista de IA",
+      "description": "Una pregunta llega al modelo que eliges: Claude, ChatGPT o Gemini, con el uso medido en créditos según el plan. El modelo trabaja con un system prompt estático, pensado para aprovechar el caché, y con la memoria propia del portafolio, y consulta el portafolio con tool use, desde Supabase con row-level security, antes de responder.",
+      "question": {
+        "label": "Tu pregunta",
+        "note": "créditos según el plan"
+      },
+      "model": {
+        "label": "Selector de modelo",
+        "note": "Claude · ChatGPT · Gemini"
+      },
+      "prompt": {
+        "label": "System prompt",
+        "note": "estático y cacheable"
+      },
+      "memory": {
+        "label": "Memoria",
+        "note": "una por portafolio"
+      },
+      "tools": {
+        "label": "Tool use",
+        "note": "consulta el portafolio"
+      },
+      "data": {
+        "label": "Supabase",
+        "note": "row-level security"
+      },
+      "answer": {
+        "label": "Respuesta"
+      }
+    },
+    "vdcSystem": {
+      "title": "VDC Plugins: add-in, control de licencias y suscripciones",
+      "description": "La tienda en línea ofrece una prueba gratuita y la descarga del instalador. Cada add-in de Revit pasa por un control de licencias compartido, por herramienta, que bloquea el acceso si no se confirma. El control busca el slug de la herramienta en el registro de plugins y lo compara con las suscripciones de Stripe, de organización y personales, que los webhooks mantienen al día por ID de suscripción.",
+      "storefront": {
+        "label": "Tienda en línea",
+        "note": "prueba gratuita · instalador"
+      },
+      "addin": {
+        "label": "Add-in de Revit",
+        "note": "C# · .NET 8 · Revit 2025–2026"
+      },
+      "gate": {
+        "label": "Control de licencias",
+        "note": "bloquea si no se confirma el acceso"
+      },
+      "registry": {
+        "label": "Registro de slugs",
+        "note": "un slug por herramienta"
+      },
+      "subscriptions": {
+        "label": "Suscripciones de Stripe",
+        "note": "de organización y personales"
+      },
+      "webhooks": {
+        "label": "Webhooks de Stripe",
+        "note": "ciclo de vida por ID de suscripción"
+      }
+    },
+    "f1Pipeline": {
+      "title": "El pipeline de F1 Forecast Lab",
+      "description": "Los datos de carrera entran con FastF1 y pasan por validaciones de leakage. Los modelos de regresión logística, LightGBM y XGBoost, con calibración, se comparan en backtests por evento y por temporada. El CLI de operación f1-weekend y la sincronización con Supabase alimentan un dashboard en Next.js que compara predicciones contra resultados reales.",
+      "ingestion": {
+        "label": "Ingesta con FastF1",
+        "note": "monorepo de Python con uv"
+      },
+      "leakage": {
+        "label": "Validación de leakage"
+      },
+      "models": {
+        "label": "Modelos",
+        "note": "logística · LightGBM · XGBoost, calibrados"
+      },
+      "backtests": {
+        "label": "Backtests",
+        "note": "por evento y por temporada"
+      },
+      "cli": {
+        "label": "f1-weekend",
+        "note": "CLI de operación"
+      },
+      "sync": {
+        "label": "Sincronización con Supabase"
+      },
+      "dashboard": {
+        "label": "Dashboard",
+        "note": "Next.js · predicción vs resultado"
+      }
+    },
+    "expressusCheckout": {
+      "title": "Checkout de Expressus Café",
+      "description": "El carrito de un invitado vive en una cookie HTTP-only. Skydropx cotiza el envío, una función transaccional de la base de datos calcula los totales y el cliente paga con Stripe Checkout. Después, un webhook firmado lleva al cambio de inventario, también en una función transaccional.",
+      "cart": {
+        "label": "Carrito de invitado",
+        "note": "cookie HTTP-only"
+      },
+      "shipping": {
+        "label": "Cotización de envío",
+        "note": "Skydropx"
+      },
+      "totals": {
+        "label": "Totales del checkout",
+        "note": "función transaccional en la base de datos"
+      },
+      "checkout": {
+        "label": "Stripe Checkout"
+      },
+      "webhook": {
+        "label": "Webhook firmado"
+      },
+      "stock": {
+        "label": "Cambio de inventario",
+        "note": "función transaccional en la base de datos"
+      }
+    },
+    "forgeClashFlow": {
+      "title": "Flujo de Forge Clash Insight",
+      "description": "El usuario inicia sesión con Autodesk (APS/ACC) o Procore. Los modelos se procesan, la detección de colisiones GJK encuentra las interferencias y cada una recibe un puntaje de severidad. Los resultados van a un visor en Three.js y a un análisis con LLM a través de n8n.",
+      "signin": {
+        "label": "Inicio de sesión",
+        "note": "Autodesk APS/ACC · Procore"
+      },
+      "processing": {
+        "label": "Procesamiento del modelo"
+      },
+      "gjk": {
+        "label": "Detección de colisiones GJK"
+      },
+      "severity": {
+        "label": "Puntaje de severidad"
+      },
+      "viewer": {
+        "label": "Visor 3D",
+        "note": "Three.js"
+      },
+      "llm": {
+        "label": "Análisis con LLM",
+        "note": "n8n"
+      }
+    }
   }
 }

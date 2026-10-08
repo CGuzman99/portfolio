@@ -84,7 +84,7 @@ content/
 i18n/request.ts         locale from cookie, then Accept-Language, then en
 messages/en.json  messages/es.json
 proxy.ts                first-visit locale detection (Next 16)
-scripts/cv.mts scripts/screenshots.ts
+scripts/cv.mts scripts/screenshots.mts
 tests/                  Playwright + axe
 docs/decisions.md  docs/content-sources.md
 ```
@@ -95,5 +95,6 @@ docs/decisions.md  docs/content-sources.md
 - **Contact:** server action validates with Zod; rejects a filled honeypot or a submit under 3 seconds; sends with Resend from its test sender to `CONTACT_TO` (your Gmail) until a domain is verified, then from `RESEND_FROM`, so the domain switch is a config change. The Zod schema (`lib/contact.ts`) is shared by the form and the action; the action returns `sent`, `invalid`, `spam`, `tooFast` or `failed`, shown as a Sonner toast. Env: `RESEND_API_KEY`, `CONTACT_TO`, optional `RESEND_FROM`; `CONTACT_DRY_RUN=1` logs instead of sending, set by `playwright.config.ts` for e2e and ignored on Vercel (M5).
 - **SEO:** metadata per page from the locale; `metadataBase` from `NEXT_PUBLIC_SITE_URL`; sitemap and robots; no hreflang.
 - **CV:** `/cv` print stylesheet; `npm run cv` renders `public/cv/carlos-guzman-cv-en.pdf` and `-es.pdf` with Playwright.
-- **Screenshots:** `npm run shots` captures the public sites at 1440 × 900 in light and dark into `public/projects/<slug>/`; Fibrant uses the demo account through a stored login state that is git-ignored.
+- **Screenshots:** `npm run shots` (`scripts/screenshots.mts`, run with Node type stripping like `cv.mts`, changed in M6) captures the public sites at 1440 × 900 in light and dark into `public/projects/<slug>/<name>.{light,dark}.png`; Fibrant uses the demo account through a stored login state in `tests/.auth/` that is git-ignored, signing in with `FIBRANT_DEMO_EMAIL` / `FIBRANT_DEMO_PASSWORD` (environment or `.env.local`) when it expires. `FIBRANT_URL` defaults to `http://localhost:3000`.
+- **Visuals (M6):** a screenshot renders as two `next/image`s, one per theme, shown by the `.dark` class; both stay `loading="lazy"` so only the visible one loads, and the hero uses `fetchPriority="high"`, not `preload` (Next 16 docs, Image › Theme detection). Diagrams are inline SVG built on `components/figures/flow-diagram.tsx`, coloured only by theme tokens, with every label in `messages/*.json` under `figures`. The hero is always Fig. 1, captioned from the MDX `meta.hero`; body figures start at 2.
 - **Dependencies (approved):** next-intl, @next/mdx, @mdx-js/react, zod, react-hook-form, @hookform/resolvers, next-themes, rehype-pretty-code, shiki, @vercel/analytics, resend; dev: @playwright/test, @axe-core/playwright, @lhci/cli.
