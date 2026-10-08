@@ -4,6 +4,10 @@ import { CodeExcerpt } from "@/components/case-study/code-excerpt";
 import { Figure } from "@/components/case-study/figure";
 import { Screenshot } from "@/components/case-study/screenshot";
 import {
+  ScrollPre,
+  ScrollTable,
+} from "@/components/case-study/scroll-region";
+import {
   ExpressusCheckoutFigure,
   F1PipelineFigure,
   FibrantAnalystFigure,
@@ -35,8 +39,9 @@ const components = {
     ) : (
       <section {...props} />
     ),
-  // A code block scrolls sideways; keyboard users need to be able to reach it.
-  pre: (props: ComponentProps<"pre">) => <pre tabIndex={0} {...props} />,
+  // Code blocks and tables scroll sideways; see scroll-region.tsx.
+  pre: ScrollPre,
+  table: ScrollTable,
   Figure,
   CodeExcerpt,
   Screenshot,

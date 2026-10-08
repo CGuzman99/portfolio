@@ -188,4 +188,33 @@ in M6; they state nothing beyond the case-study facts above, plus these:
   from Forge Clash Insight's `gjk-collision.ts`, unchanged.
 - **F1 event screenshot:** the 2026 Azerbaijan Grand Prix race page on
   deepspace.com.mx, predicted points chance against points scored. No metric
-  is quoted in copy; backtest metrics stay [PLACEHOLDER] until M7.
+  is quoted in its caption; the metrics copy may quote are below.
+
+## F1 backtest metrics (confirmed by Carlos, M7)
+
+Read from the local deepspace-labs repo, `projects/f1_forecast/artifacts/backtests_report/`:
+`default-raw-models-20260529/backtest_report.md` (qualifying) and
+`race-default-raw-models-20260530/backtest_report.md` (race). Logistic
+regression, LightGBM and XGBoost, raw calibration, on 11 non-overlapping
+five-event windows rolling from the 2023 season: 1,065 qualifying rows and
+1,068 race rows.
+
+Event level, XGBoost against logistic regression. Higher ROC AUC is better
+(ranking); lower Brier score is better (probability quality).
+
+| Target | XGBoost ROC AUC | Logistic ROC AUC | XGBoost Brier | Logistic Brier |
+| --- | ---: | ---: | ---: | ---: |
+| Reaches Q3 | 0.880 | 0.878 | 0.143 | 0.142 |
+| Qualifies top 5 | 0.910 | 0.912 | 0.097 | 0.110 |
+| Qualifies top 3 | 0.908 | 0.907 | 0.083 | 0.110 |
+| Finishes in the points | 0.854 | 0.850 | 0.154 | 0.158 |
+| Finishes top 5 | 0.932 | 0.930 | 0.084 | 0.095 |
+| Podium | 0.927 | 0.929 | 0.075 | 0.097 |
+
+- **Reading:** the two models rank drivers about equally well; XGBoost has the
+  lower Brier score on 5 of the 6 targets (all but Reaches Q3).
+- **Production model:** XGBoost, for both qualifying and race
+  (`xgboost-qualifying-20260615`, `xgboost-race-default-20260530-01`, per
+  `data/operator_runs/20261007_through_16/summary.json`).
+- LightGBM and the season-level numbers are in the same reports and are not
+  quoted.

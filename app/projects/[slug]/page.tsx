@@ -57,7 +57,7 @@ export default async function CaseStudyPage({
         <div className="lg:col-start-1 lg:row-span-2 lg:row-start-1">
           <ProjectMeta project={project} locale={locale} />
         </div>
-        <div className="max-w-text lg:col-start-2">
+        <div className="max-w-text min-w-0 lg:col-start-2">
           <Hero project={project} hero={meta.hero} />
           <div className="prose-paper mt-8">
             <Content />

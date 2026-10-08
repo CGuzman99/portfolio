@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { labelScrollRegions } from "./scroll-region";
 
 /**
  * A captioned figure in the paper's style: "Fig. N — caption". Numbers are
@@ -19,13 +20,18 @@ export async function Figure({
   children: ReactNode;
 }) {
   const t = await getTranslations("mdx");
+  // Figure numbers are unique on a page, so the caption id is too.
+  const captionId = `fig-${number}-caption`;
 
   return (
     <figure className={cn("my-8", className)}>
       <div className="overflow-hidden rounded-sm border border-border">
-        {children}
+        {labelScrollRegions(children, captionId)}
       </div>
-      <figcaption className="mt-2 font-mono text-meta text-muted-foreground">
+      <figcaption
+        id={captionId}
+        className="mt-2 font-mono text-meta text-muted-foreground"
+      >
         {t("figure", { number })} — {caption}
       </figcaption>
     </figure>

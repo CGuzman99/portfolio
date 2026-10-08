@@ -19,7 +19,7 @@ Fui el desarrollador principal de F1 Forecast Lab, un proyecto de DeepSpace.
 
 - **Datos.** Un monorepo de Python administrado con `uv` ingiere datos de cada sesión con FastF1, con validaciones de leakage que mantienen la información futura fuera del entrenamiento.
 - **Modelos.** Regresión logística, LightGBM y XGBoost, con calibración, comparados en backtests por evento y por temporada.
-- **Operación.** El CLI `f1-weekend` dirige cada corrida y los resultados se sincronizan con Supabase.
+- **Operación.** El CLI de operación `f1-weekend` dirige cada corrida y los resultados se sincronizan con Supabase.
 - **Dashboard.** Un dashboard en Next.js muestra lo pronosticado frente a los resultados reales.
 
 <Figure number={2} caption="De los datos de FastF1 al dashboard.">
@@ -32,4 +32,19 @@ Fui el desarrollador principal de F1 Forecast Lab, un proyecto de DeepSpace.
 
 ## Resultado
 
-En producción, con los modelos de clasificación y carrera terminados. [PLACEHOLDER: métricas de backtest de `f1_model_runs`]
+En producción, con los modelos de clasificación y carrera terminados.
+
+Comparé regresión logística, LightGBM y XGBoost en 11 ventanas de cinco eventos, a partir de la temporada 2023. La regresión logística y XGBoost ordenan a los pilotos prácticamente igual de bien, pero las probabilidades de XGBoost se acercan más a lo que pasó: tiene el Brier score más bajo en 5 de las 6 variables objetivo. XGBoost es el modelo que está en producción, tanto para la clasificación como para la carrera.
+
+<Figure number={4} caption="Backtests por evento, XGBoost frente a regresión logística. Un ROC AUC más alto es mejor; un Brier score más bajo es mejor.">
+
+| Objetivo | ROC AUC XGBoost | ROC AUC logística | Brier XGBoost | Brier logística |
+| --- | ---: | ---: | ---: | ---: |
+| Pasa a la Q3 | 0.880 | 0.878 | 0.143 | 0.142 |
+| Top 5 en clasificación | 0.910 | 0.912 | 0.097 | 0.110 |
+| Top 3 en clasificación | 0.908 | 0.907 | 0.083 | 0.110 |
+| Termina en zona de puntos | 0.854 | 0.850 | 0.154 | 0.158 |
+| Top 5 en carrera | 0.932 | 0.930 | 0.084 | 0.095 |
+| Podio | 0.927 | 0.929 | 0.075 | 0.097 |
+
+</Figure>

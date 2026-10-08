@@ -1,6 +1,6 @@
 export const meta = {
   title: "VDC Plugins for Revit",
-  summary: "Una suite comercial de unos 10 plugins para Revit, pensada para equipos de construcción, y el sistema de licencias y suscripciones que la sostiene.",
+  summary: "Una suite comercial de unos 10 add-ins para Revit, pensada para equipos de construcción, y el sistema de licencias y suscripciones que la sostiene.",
   hero: {
     caption: "La suite de add-ins y su lado web: cada herramienta pasa por el control de licencias.",
   },
@@ -8,17 +8,17 @@ export const meta = {
 
 ## Problema
 
-VDC Plugins se vende por suscripción, así que dos cosas tienen que funcionar juntas: herramientas que corran de forma confiable dentro de Revit y un sistema de licencias que solo deje entrar a quien paga.
+VDC Plugins se vende por suscripción, así que dos cosas tienen que funcionar juntas: herramientas que corran de forma confiable dentro de Revit y un sistema de licencias que solo deje entrar a quien tiene acceso.
 
 ## Mi rol
 
-Soy el desarrollador principal de la suite de add-ins y colaboro en la app de suscripciones y la tienda en línea de UtahBIM. Trabajo con UtahBIM por contrato a través de Upwork.
+Lidero el desarrollo de la suite de add-ins y colaboro en la app de suscripciones y la tienda en línea de UtahBIM. Trabajo con UtahBIM por contrato a través de Upwork.
 
 ## Enfoque
 
 - **Add-ins.** Unas 10 herramientas en C# sobre .NET 8, para Revit 2025 y 2026, distribuidas en un solo instalador de Inno Setup.
 - **Control de licencias.** Cada herramienta pasa por un control compartido, por herramienta, que bloquea el acceso a menos que se confirme. Las herramientas de otro desarrollador se integraron a la misma estructura y al mismo control, con correcciones en el camino.
-- **Migraciones y reglas.** La lógica que vivía en Dynamo y Python se migró a C#. Las validaciones de pendiente siguen la tabla 704.1 del IPC, con la tolerancia documentada.
+- **De Dynamo a C# y reglas.** La lógica que vivía en Dynamo y Python se migró a C#. Las validaciones de pendiente siguen la tabla 704.1 del IPC, con la tolerancia documentada.
 - **Lado web.** Cada plugin tiene un slug en un registro. Stripe maneja las suscripciones de organización y personales, y los webhooks siguen el ciclo de vida de cada suscripción por su ID, lo que cerró huecos por donde se filtraba el acceso. La tienda tiene un flujo de prueba gratuita y descargas del instalador, y se despliega con Docker y Prisma.
 
 <Figure number={2} caption="La tienda en línea de vdcplugins.com, donde empieza la prueba gratuita.">

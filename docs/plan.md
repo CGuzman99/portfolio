@@ -226,16 +226,16 @@ Eight milestones in order, each one Claude Code session committed directly to `m
 
 These are the inputs only you can provide, listed in the order the milestones need them.
 
-- [ ] Create the public repo `CGuzman99/portfolio` and link it to a Vercel project (before M1)
-- [ ] Attach this plan to the M1 session, or paste its sections into the two docs files (M1)
-- [ ] Send your Upwork profile URL (M4)
-- [ ] Send your GitHub profile URL (M4)
+- [X] Create the public repo `CGuzman99/portfolio` and link it to a Vercel project (before M1)
+- [X] Attach this plan to the M1 session, or paste its sections into the two docs files (M1)
+- [X] Send your Upwork profile URL (M4)
+- [X] Send your GitHub profile URL (M4)
 - [ ] Add a photo, square, at least 800 px (M4)
 - [ ] Create a Resend account and add `RESEND_API_KEY` and `CONTACT_TO` in Vercel (M5)
-- [x] Create the Fibrant demo account with made-up data (M6) — local, us-demo@example.test, portfolio "US Growth"
-- [ ] Export the F1 model-run metrics, or provide a read-only key for that session (deferred from M6 to M7)
-- [x] Approve each code excerpt, including the UtahBIM ones (M6)
-- [ ] Approve EN and ES copy for every page (M4, M7)
+- [X] Create the Fibrant demo account with made-up data (M6) — local, us-demo@example.test, portfolio "US Growth"
+- [X] Export the F1 model-run metrics, or provide a read-only key for that session (deferred from M6 to M7) — read from the local backtest reports in deepspace-labs (M7)
+- [X] Approve each code excerpt, including the UtahBIM ones (M6)
+- [X] Approve EN and ES copy for every page (M4, M7)
 - [ ] Buy the domain, verify it in Resend, set `NEXT_PUBLIC_SITE_URL` and `RESEND_FROM` (after launch)
 - [ ] Update LinkedIn from the finished About page (after launch)
 

@@ -890,6 +890,27 @@
       @apply rounded-sm bg-muted px-1 font-mono text-[0.9em];
     }
 
+    /* Tables read like a paper's: mono figures, hairline rules, no fills. */
+    & table {
+      @apply w-full border-collapse font-mono text-meta;
+    }
+    & :is(th, td) {
+      @apply px-3 py-2 text-left align-bottom;
+    }
+    & td {
+      @apply whitespace-nowrap;
+    }
+    & :is(th, td)[align="right"],
+    & :is(th, td)[style*="right"] {
+      @apply text-right tabular-nums;
+    }
+    & thead th {
+      @apply border-b border-border font-normal text-muted-foreground;
+    }
+    & tbody tr + tr td {
+      @apply border-t border-border;
+    }
+
     & [data-footnotes] ol {
       @apply mt-4 list-decimal pl-6;
     }
