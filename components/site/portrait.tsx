@@ -15,7 +15,7 @@ export async function Portrait() {
 
   if (!exists) {
     return (
-      <div className="flex aspect-square w-full items-center justify-center rounded-sm border border-dashed border-border p-4 text-center font-mono text-meta text-muted-foreground">
+      <div className="flex aspect-square w-full items-center justify-center rounded-full border border-dashed border-border p-8 text-center font-mono text-meta text-muted-foreground">
         {t("photoPending")}
       </div>
     );
@@ -29,7 +29,7 @@ export async function Portrait() {
       height={800}
       sizes="(min-width: 768px) 15rem, 100vw"
       preload
-      className="aspect-square w-full rounded-sm border border-border object-cover"
+      className="aspect-square w-full rounded-full border border-border object-cover"
     />
   );
 }

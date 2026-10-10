@@ -51,7 +51,7 @@ export default async function AboutPage() {
         {t("title")}
       </h1>
 
-      <div className="mt-12 grid gap-8 md:grid-cols-[15rem_minmax(0,1fr)] md:gap-12">
+      <div className="mt-12 grid gap-8 md:grid-cols-[15rem_minmax(0,1fr)] md:items-center md:gap-12">
         <div className="mx-auto w-full max-w-60 md:mx-0">
           <Portrait />
         </div>
