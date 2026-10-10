@@ -3,10 +3,11 @@ import { getTranslations } from "next-intl/server";
 import { ContactForm } from "@/components/site/contact-form";
 import { sectionLabelClass, textLinkClass } from "@/components/site/text-link";
 import { profile } from "@/content/profile";
+import { pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("meta");
-  return { title: t("contactTitle") };
+  return pageMetadata({ title: t("contactTitle"), path: "/contact" });
 }
 
 export default async function ContactPage() {

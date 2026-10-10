@@ -6,10 +6,11 @@ import { ContractBlock } from "@/components/site/contract-block";
 import { Portrait } from "@/components/site/portrait";
 import { sectionLabelClass, textLinkClass } from "@/components/site/text-link";
 import { profile, type SkillGroup } from "@/content/profile";
+import { pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("meta");
-  return { title: t("aboutTitle") };
+  return pageMetadata({ title: t("aboutTitle"), path: "/about" });
 }
 
 function Section({
@@ -51,7 +52,7 @@ export default async function AboutPage() {
       </h1>
 
       <div className="mt-12 grid gap-8 md:grid-cols-[15rem_minmax(0,1fr)] md:gap-12">
-        <div className="max-w-60">
+        <div className="mx-auto w-full max-w-60 md:mx-0">
           <Portrait />
         </div>
         <div className="max-w-text">

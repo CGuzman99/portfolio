@@ -24,10 +24,10 @@ build needs none of them; the contact form fails politely without them.
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | The site's public URL |
-| `RESEND_API_KEY` | Resend API key for the contact form |
-| `CONTACT_TO` | Where contact messages go. With Resend's test sender this must be the Resend account's own email |
-| `RESEND_FROM` | Sender on a verified domain, once there is one; defaults to Resend's test sender |
+| `NEXT_PUBLIC_SITE_URL` | The site's public URL, used by metadata, the sitemap and robots: `https://cguzman.dev` in Production. On Vercel it falls back to the production address |
+| `RESEND_API_KEY` | Resend API key for the contact form, from the account that verified `cguzman.dev` |
+| `CONTACT_TO` | Where contact messages go: `carlos@cguzman.dev` |
+| `RESEND_FROM` | Sender on the verified domain: `Portfolio <portfolio@cguzman.dev>`. Unset, it falls back to Resend's test sender, which only delivers to the Resend account's own email |
 | `CONTACT_DRY_RUN` | `1` logs messages instead of sending them. Set by the Playwright config; ignored on Vercel |
 
 ## Scripts
@@ -41,6 +41,20 @@ build needs none of them; the contact form fails politely without them.
 | `npm run lint` | ESLint |
 | `npm run test:e2e` | Playwright + axe, run once per theme. Needs a build first |
 | `npm run verify` | All four of the above, in order — the pre-commit gate |
+| `npm run lhci` | Lighthouse CI: 95 per category, 90 for mobile performance. Needs a build first; see below |
+
+## Lighthouse
+
+`npm run lhci` audits every page once per call, at 95 per category (90 for
+mobile performance). With no `LIGHTHOUSE_BASE_URL` it
+starts `next start` on port 3000 itself. Env vars pick the combination:
+`LIGHTHOUSE_PRESET` (`mobile` | `desktop`), `LIGHTHOUSE_THEME` (`light` | `dark`),
+`LIGHTHOUSE_LOCALE` (`en` | `es`). Reports land in `.lighthouseci/`.
+
+The **Lighthouse** workflow runs all eight combinations against each Vercel
+deployment once it succeeds. It needs the repo secret
+`VERCEL_AUTOMATION_BYPASS_SECRET`, the value of Vercel's *Protection Bypass for
+Automation* (Project Settings → Deployment Protection).
 
 ## Documentation
 
@@ -53,5 +67,6 @@ build needs none of them; the contact form fails politely without them.
 
 ## Licence
 
-Code is readable for review. The content, copy, images and design are not
+Code is readable for review. The IBM Plex fonts in `assets/fonts/` are under the
+SIL Open Font License (`assets/fonts/LICENSE.txt`). The content, copy, images and design are not
 licensed for reuse.

@@ -4,11 +4,14 @@ import {
   IBM_Plex_Sans,
   IBM_Plex_Serif,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { ThemeProvider } from "@/components/site/theme-provider";
+import { SITE_NAME, TITLE_TEMPLATE, ogLocale } from "@/lib/metadata";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const plexSerif = IBM_Plex_Serif({
@@ -33,10 +36,19 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("meta");
+  const [locale, t] = await Promise.all([getLocale(), getTranslations("meta")]);
   return {
-    title: t("title"),
+    metadataBase: new URL(siteUrl()),
+    title: { default: t("title"), template: TITLE_TEMPLATE },
     description: t("description"),
+    openGraph: {
+      type: "website",
+      siteName: SITE_NAME,
+      locale: ogLocale(locale),
+      title: t("title"),
+      description: t("description"),
+    },
+    twitter: { card: "summary_large_image" },
   };
 }
 
@@ -63,6 +75,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <SiteFooter />
           </NextIntlClientProvider>
         </ThemeProvider>
+        {/* Only on Vercel: elsewhere /_vercel/insights/script.js is a 404,
+            and that console error costs Lighthouse best-practice points. */}
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   );

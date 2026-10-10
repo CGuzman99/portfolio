@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ContractBlock } from "@/components/site/contract-block";
@@ -5,6 +6,11 @@ import { sectionLabelClass, textLinkClass } from "@/components/site/text-link";
 import { getCaseStudy } from "@/content/mdx";
 import { projects } from "@/content/projects";
 import { normalizeAppLocale } from "@/i18n/config";
+import { pageMetadata } from "@/lib/metadata";
+
+export function generateMetadata(): Promise<Metadata> {
+  return pageMetadata({ path: "/" });
+}
 
 export default async function Home() {
   const [locale, t] = await Promise.all([

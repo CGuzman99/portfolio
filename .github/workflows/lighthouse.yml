@@ -1,0 +1,63 @@
+name: Lighthouse
+
+# Vercel reports each deployment back to GitHub as a deployment status; when
+# one succeeds, audit that exact deployment — preview or production — against
+# the 95 budget in lighthouserc.cjs.
+on: deployment_status
+
+# Nothing here writes to the repo.
+permissions:
+  contents: read
+
+concurrency:
+  group: lighthouse-${{ github.event.deployment.sha }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    name: ${{ matrix.preset }} · ${{ matrix.theme }} · ${{ matrix.locale }}
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    strategy:
+      # One combination failing should not hide the others' scores.
+      fail-fast: false
+      matrix:
+        preset: [mobile, desktop]
+        theme: [light, dark]
+        locale: [en, es]
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.deployment.sha }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Chrome comes with the ubuntu-latest runner image.
+      - name: Lighthouse CI
+        run: npm run lhci
+        env:
+          LIGHTHOUSE_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          # A deployment URL, which Vercel always marks noindex (see lighthouserc.cjs).
+          LIGHTHOUSE_DEPLOYMENT_URL: "1"
+          LIGHTHOUSE_PRESET: ${{ matrix.preset }}
+          LIGHTHOUSE_THEME: ${{ matrix.theme }}
+          LIGHTHOUSE_LOCALE: ${{ matrix.locale }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+
+      - name: Upload Lighthouse reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-${{ matrix.preset }}-${{ matrix.theme }}-${{ matrix.locale }}
+          path: .lighthouseci/
+          retention-days: 14
+          if-no-files-found: ignore

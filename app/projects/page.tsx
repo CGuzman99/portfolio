@@ -6,10 +6,11 @@ import { Timeframe } from "@/components/case-study/timeframe";
 import { getCaseStudy } from "@/content/mdx";
 import { projects } from "@/content/projects";
 import { normalizeAppLocale } from "@/i18n/config";
+import { pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("meta");
-  return { title: t("projectsTitle") };
+  return pageMetadata({ title: t("projectsTitle"), path: "/projects" });
 }
 
 export default async function ProjectsPage() {

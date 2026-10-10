@@ -7,6 +7,7 @@ import { ProjectMeta } from "@/components/case-study/project-meta";
 import { getCaseStudy } from "@/content/mdx";
 import { getNextProject, getProject, projects } from "@/content/projects";
 import { normalizeAppLocale } from "@/i18n/config";
+import { pageMetadata } from "@/lib/metadata";
 
 // Only registry slugs exist; anything else is a 404.
 export const dynamicParams = false;
@@ -26,8 +27,13 @@ async function load(params: PageProps<"/projects/[slug]">["params"]) {
 export async function generateMetadata({
   params,
 }: PageProps<"/projects/[slug]">): Promise<Metadata> {
-  const { meta } = await load(params);
-  return { title: meta.title };
+  const { project, meta } = await load(params);
+  return pageMetadata({
+    title: meta.title,
+    description: meta.summary,
+    path: `/projects/${project.slug}`,
+    ownImage: true,
+  });
 }
 
 export default async function CaseStudyPage({

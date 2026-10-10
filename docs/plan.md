@@ -21,7 +21,7 @@ All 17 planning items are decided; the table is the source for `docs/decisions.m
 | --- | --- | --- |
 | 1 | Positioning | Software Engineer, full-stack plus AI; remote full-time and contract roles, US, Mexico and elsewhere; no seniority level stated |
 | 2 | Brand | Personal name only; "Available for contract work" block with no prices; Upwork Top Rated and 100% JSS shown; no testimonials; DeepSpace named in About and in the Fibrant, F1 Forecast Lab and Expressus Café case studies (changed by Carlos in M3: all three are DeepSpace projects) |
-| 3 | Name and domain | Display name Carlos Guzman; domain and email deferred; site URL read from `NEXT_PUBLIC_SITE_URL` |
+| 3 | Name and domain | Display name Carlos Guzman; domain `cguzman.dev`, email `carlos@cguzman.dev` (bought after launch, 2026-10-10); site URL still read from `NEXT_PUBLIC_SITE_URL`, never hardcoded |
 | 4 | Lineup | Fibrant, VDC Plugins for Revit, F1 Forecast Lab (featured on Home), then Expressus Café, Forge Clash Insight; UtahBIM named and linked |
 | 5 | Case-study facts | Confirmed per project in the Case studies section; unknown outcomes stay as `[PLACEHOLDER]` |
 | 6 | Proof assets | Screenshots of public sites and a Fibrant demo account; SVG diagrams; short code excerpts allowed (UtahBIM included); no repo links, "Code walkthrough available on request"; no video in v1 |
@@ -31,7 +31,7 @@ All 17 planning items are decided; the table is the source for `docs/decisions.m
 | 10 | Layouts | Home: headline plus numbered project index; case study: metadata in a sticky left column on wide screens |
 | 11 | Versions | Next.js 16, npm, Tailwind v4, shadcn; i18n copied from Fibrant |
 | 12 | Content | `@next/mdx`; Zod-checked `content/projects.ts` for facts; per-locale MDX for words; `rehype-pretty-code` and `shiki` for code |
-| 13 | Contact | Fields: name, email, company (optional), reason, message; honeypot plus minimum-time check; Resend test sender to your Gmail now, your own domain later; no booking |
+| 13 | Contact | Fields: name, email, company (optional), reason, message; honeypot plus minimum-time check; Resend from `portfolio@cguzman.dev` to `carlos@cguzman.dev` (was the test sender to Gmail until 2026-10-10); no booking |
 | 14 | Extras | Vercel Web Analytics; `next/og` images; CV PDFs from `/cv` with Playwright |
 | 15 | Claude Code setup | `CLAUDE.md`, decisions and content-sources docs, three skills, hooks, reviewer subagent, shadcn and Playwright MCP |
 | 16 | Workflow | One milestone per session, committed directly to `main` (no branches or PRs); plan mode first; `/verify` plus reviewer before each commit; Carlos approves all copy |
@@ -145,7 +145,7 @@ docs/decisions.md  docs/content-sources.md
 - **Project record (`content/projects.ts`):** `slug`, `order`, `featured`, `status` (live, commercial, prototype), `timeframe` {start, end or null}, `client` {name, url} or null, `team`, `stack[]`, `tags[]`, `links[]`, `hero` {kind: screenshot or figure, src}. The build fails if any record is missing an MDX file in either locale.
 - **i18n:** next-intl without i18n routing, copied from Fibrant (`proxy.ts`, `i18n/request.ts`, the locale action). Cookie `NEXT_LOCALE`; switching calls the server action, then `router.refresh()`; the URL never changes.
 - **MDX:** `@next/mdx` with `rehype-pretty-code` + `shiki`; MDX components map figures, footnotes and code to the design system.
-- **Contact:** server action validates with Zod; rejects a filled honeypot or a submit under 3 seconds; sends with Resend from its test sender to `CONTACT_TO` (your Gmail) until a domain is verified, then from `RESEND_FROM`, so the domain switch is a config change.
+- **Contact:** server action validates with Zod; rejects a filled honeypot or a submit under 3 seconds; sends with Resend from `RESEND_FROM` (`portfolio@cguzman.dev`, verified in its own free Resend account) to `CONTACT_TO` (`carlos@cguzman.dev`); without `RESEND_FROM` it falls back to the test sender, which only reaches the Resend account owner. The domain switch was config only.
 - **SEO:** metadata per page from the locale; `metadataBase` from `NEXT_PUBLIC_SITE_URL`; sitemap and robots; no hreflang.
 - **CV:** `/cv` print stylesheet; `npm run cv` renders `public/cv/carlos-guzman-cv-en.pdf` and `-es.pdf` with Playwright.
 - **Screenshots:** `npm run shots` captures the public sites at 1440 × 900 in light and dark into `public/projects/<slug>/`; Fibrant uses the demo account through a stored login state that is git-ignored.
@@ -230,20 +230,24 @@ These are the inputs only you can provide, listed in the order the milestones ne
 - [X] Attach this plan to the M1 session, or paste its sections into the two docs files (M1)
 - [X] Send your Upwork profile URL (M4)
 - [X] Send your GitHub profile URL (M4)
-- [ ] Add a photo, square, at least 800 px (M4)
-- [ ] Create a Resend account and add `RESEND_API_KEY` and `CONTACT_TO` in Vercel (M5)
+- [X] Add a photo, square, at least 800 px (Added provisional photo, size 304px x 304px) (M4)
+- [x] Create a Resend account and add `RESEND_API_KEY` and `CONTACT_TO` in Vercel (M5)
 - [X] Create the Fibrant demo account with made-up data (M6) — local, us-demo@example.test, portfolio "US Growth"
 - [X] Export the F1 model-run metrics, or provide a read-only key for that session (deferred from M6 to M7) — read from the local backtest reports in deepspace-labs (M7)
 - [X] Approve each code excerpt, including the UtahBIM ones (M6)
 - [X] Approve EN and ES copy for every page (M4, M7)
-- [ ] Buy the domain, verify it in Resend, set `NEXT_PUBLIC_SITE_URL` and `RESEND_FROM` (after launch)
+- [x] Turn on Web Analytics for the Vercel project (M8)
+- [x] Turn on Vercel's Protection Bypass for Automation and add it to GitHub as the `VERCEL_AUTOMATION_BYPASS_SECRET` secret (M8)
+- [x] Set `NEXT_PUBLIC_SITE_URL` in Vercel (Production) to the `vercel.app` address (M8)
+- [x] Buy the domain (`cguzman.dev`) and set up `carlos@cguzman.dev` (after launch)
+- [x] Verify `cguzman.dev` in Resend, then set `NEXT_PUBLIC_SITE_URL`, `RESEND_API_KEY`, `RESEND_FROM` and `CONTACT_TO` in Vercel and redeploy (after launch)
 - [ ] Update LinkedIn from the finished About page (after launch)
 
 ## Backlog after v1
 
 Each item is out of v1 scope and slots in without changing the architecture.
 
-- Custom domain and email address (config only: `NEXT_PUBLIC_SITE_URL`, `RESEND_FROM`)
+- ~~Custom domain and email address~~ — done: `cguzman.dev`, `carlos@cguzman.dev` (config only)
 - Cal.com booking link on Contact, if you decide to offer it
 - 30–60 s Fibrant screen recording on its case study
 - Testimonials, once you have Upwork quotes you choose to use
