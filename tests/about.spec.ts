@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { setLocaleCookie } from "./helpers";
+import { EMAIL, setLocaleCookie } from "./helpers";
 
 const HEADINGS = {
   en: ["Skills", "Experience", "Education", "Languages", "Credentials", "CV"],
@@ -57,5 +57,7 @@ test("the profile links point at Carlos's profiles", async ({
 
 test("the email stays off About", async ({ page }) => {
   await page.goto("/about");
-  await expect(page.locator("body")).not.toContainText("@gmail.com");
+  await expect(page.locator("body")).not.toContainText(EMAIL);
+  await expect(page.locator("body")).not.toContainText("@cguzman.dev");
+  await expect(page.locator('a[href^="mailto:"]')).toHaveCount(0);
 });

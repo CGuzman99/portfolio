@@ -31,7 +31,8 @@ function oneLine(value: string) {
  *
  * Env, read per call so the build needs no secrets:
  * - `RESEND_API_KEY`, `CONTACT_TO` — required to send;
- * - `RESEND_FROM` — the verified-domain sender, once there is one;
+ * - `RESEND_FROM` — the verified-domain sender (portfolio@cguzman.dev);
+ *   unset, the test sender is used;
  * - `CONTACT_DRY_RUN=1` — log instead of sending, for the e2e suite. Ignored
  *   on Vercel, so it can never silence the deployed form.
  */

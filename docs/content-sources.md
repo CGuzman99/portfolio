@@ -62,8 +62,11 @@ Six routes, each at one URL in both languages; the header carries the EN / ES to
 - **GitHub:** https://github.com/CGuzman99
 - **LinkedIn:** https://www.linkedin.com/in/carlos-antonio-guzm%C3%A1n-jim%C3%A9nez-8b7328225
 - **Upwork:** https://www.upwork.com/freelancers/~01b3da283ab722a8c8
-- **Email:** carlosantoniogj@gmail.com — on the CV page and its PDFs only, not
-  on the other site pages.
+- **Email:** carlos@cguzman.dev — on the CV page and its PDFs only, not
+  on the other site pages. (Replaced carlosantoniogj@gmail.com; confirmed by
+  Carlos, 2026-10-10.)
+- **Domain:** cguzman.dev — the site's address (confirmed by Carlos,
+  2026-10-10).
 - **Photo:** `public/about/photo.jpg`, square, at least 800 px — pending.
 
 ## Spanish copy (approved by Carlos, M4)

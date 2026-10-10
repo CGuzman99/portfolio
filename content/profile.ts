@@ -49,7 +49,7 @@ export const profile = ProfileSchema.parse({
       "https://www.linkedin.com/in/carlos-antonio-guzm%C3%A1n-jim%C3%A9nez-8b7328225",
     upwork: "https://www.upwork.com/freelancers/~01b3da283ab722a8c8",
   },
-  email: "carlosantoniogj@gmail.com",
+  email: "carlos@cguzman.dev",
   experience: [
     { key: "utahbim", start: "2025-08", end: null },
     { key: "fibrant", start: "2026", end: null },

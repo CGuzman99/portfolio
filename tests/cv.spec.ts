@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { setLocaleCookie } from "./helpers";
+import { EMAIL, setLocaleCookie } from "./helpers";
 
 test.beforeEach(async ({ context, baseURL }) => {
   await setLocaleCookie(context, baseURL, "en");
@@ -17,9 +17,10 @@ test("printing /cv drops the site header and footer", async ({ page }) => {
 
 test("the CV lists the email and all five projects", async ({ page }) => {
   await page.goto("/cv");
-  await expect(
-    page.getByRole("link", { name: "carlosantoniogj@gmail.com" }),
-  ).toHaveAttribute("href", "mailto:carlosantoniogj@gmail.com");
+  await expect(page.getByRole("link", { name: EMAIL })).toHaveAttribute(
+    "href",
+    `mailto:${EMAIL}`,
+  );
   await expect(
     page.getByRole("region", { name: "Projects" }).getByRole("heading", {
       level: 3,

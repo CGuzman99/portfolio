@@ -31,6 +31,12 @@ export const MENU_NAMES = {
 export const MOBILE_VIEWPORT = { width: 390, height: 800 } as const;
 
 /**
+ * The public email, from docs/content-sources.md. A literal rather than
+ * imported from content/profile.ts, so a wrong address there fails a test.
+ */
+export const EMAIL = "carlos@cguzman.dev";
+
+/**
  * The case studies in registry order. Kept as a literal rather than imported
  * from content/projects.ts, so a project dropped from the registry fails a
  * test instead of silently shrinking the suite.

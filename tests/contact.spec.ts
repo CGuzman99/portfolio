@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { CONTACT_COPY, LOCALES, setLocaleCookie } from "./helpers";
+import { CONTACT_COPY, EMAIL, LOCALES, setLocaleCookie } from "./helpers";
 
 /**
  * The contact form. The server runs with CONTACT_DRY_RUN=1 (see
@@ -55,7 +55,8 @@ for (const locale of LOCALES) {
       for (const name of ["GitHub", "LinkedIn", "Upwork"]) {
         await expect(main.getByRole("link", { name })).toBeVisible();
       }
-      await expect(page.locator("body")).not.toContainText("@gmail.com");
+      await expect(page.locator("body")).not.toContainText(EMAIL);
+      await expect(page.locator("body")).not.toContainText("@cguzman.dev");
       await expect(page.locator('a[href^="mailto:"]')).toHaveCount(0);
     });
 

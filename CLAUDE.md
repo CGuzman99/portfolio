@@ -78,8 +78,8 @@ Direction C, "Scientific paper" — the full token table and type scale are in
 - shadcn components go in `components/ui/` via the CLI; site chrome in
   `components/site/`, case-study parts in `components/case-study/`, diagrams in
   `components/figures/`.
-- Site URL comes from `NEXT_PUBLIC_SITE_URL`. No domain is bought yet, so never
-  hardcode one.
+- Site URL comes from `NEXT_PUBLIC_SITE_URL`. The domain is `cguzman.dev`, but
+  never hardcode it: preview deployments and local builds have other origins.
 
 ## Accessibility
 
