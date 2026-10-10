@@ -232,8 +232,8 @@
       }
     },
     "vdcSystem": {
-      "title": "VDC Plugins: add-in, control de licencias y suscripciones",
-      "description": "La tienda en línea ofrece una prueba gratuita y la descarga del instalador. Cada add-in de Revit pasa por un control de licencias compartido, por herramienta, que bloquea el acceso si no se confirma. El control busca el slug de la herramienta en el registro de plugins y lo compara con las suscripciones de Stripe, de organización y personales, que los webhooks mantienen al día por ID de suscripción.",
+      "title": "VDC Plugins: add-in, licencias y suscripciones",
+      "description": "La tienda en línea ofrece una prueba gratuita y la descarga del instalador. Cada add-in de Revit verifica la suscripción del usuario antes de correr, y Stripe maneja las suscripciones de organización y personales.",
       "storefront": {
         "label": "Tienda en línea",
         "note": "prueba gratuita · instalador"
@@ -243,20 +243,12 @@
         "note": "C# · .NET 8 · Revit 2025–2026"
       },
       "gate": {
-        "label": "Control de licencias",
-        "note": "bloquea si no se confirma el acceso"
-      },
-      "registry": {
-        "label": "Registro de slugs",
-        "note": "un slug por herramienta"
+        "label": "Licencias",
+        "note": "verifica el acceso"
       },
       "subscriptions": {
-        "label": "Suscripciones de Stripe",
-        "note": "de organización y personales"
-      },
-      "webhooks": {
-        "label": "Webhooks de Stripe",
-        "note": "ciclo de vida por ID de suscripción"
+        "label": "Suscripciones",
+        "note": "Stripe · de organización y personales"
       }
     },
     "f1Pipeline": {
@@ -317,19 +309,22 @@
     },
     "forgeClashFlow": {
       "title": "Flujo de Forge Clash Insight",
-      "description": "El usuario inicia sesión con Autodesk (APS/ACC) o Procore. Los modelos se procesan, la detección de colisiones GJK encuentra las interferencias y cada una recibe un puntaje de severidad. Los resultados van a un visor en Three.js y a un análisis con LLM a través de n8n.",
+      "description": "El usuario inicia sesión con Autodesk (APS/ACC) o Procore. Los modelos de distintas disciplinas se procesan y se alinean, y varios algoritmos de detección de colisiones encuentran las interferencias. Cada una recibe un puntaje de 0 a 10, ponderado con una matriz de prioridades por sistema del edificio. Los resultados van a un visor en Three.js y a un LLM que resume cada zona del edificio.",
       "signin": {
         "label": "Inicio de sesión",
         "note": "Autodesk APS/ACC · Procore"
       },
       "processing": {
-        "label": "Procesamiento del modelo"
+        "label": "Procesamiento de modelos",
+        "note": "alineados entre disciplinas"
       },
-      "gjk": {
-        "label": "Detección de colisiones GJK"
+      "detection": {
+        "label": "Detección de colisiones",
+        "note": "varios algoritmos"
       },
-      "severity": {
-        "label": "Puntaje de severidad"
+      "scoring": {
+        "label": "Puntaje de interferencias",
+        "note": "0–10 · matriz de prioridades"
       },
       "viewer": {
         "label": "Visor 3D",
@@ -337,7 +332,7 @@
       },
       "llm": {
         "label": "Análisis con LLM",
-        "note": "n8n"
+        "note": "resumen por zona"
       }
     }
   }

@@ -189,7 +189,7 @@ const records = [
       "Procore",
       "Supabase",
       "OpenAI API",
-      "n8n",
+      "GoHighLevel",
       "TanStack Query",
       "Tailwind CSS",
     ],

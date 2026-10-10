@@ -7,17 +7,17 @@ export function ForgeClashFlowFigure() {
       name="forgeClashFlow"
       rows={[
         [{ id: "signin", note: true }],
-        [{ id: "processing" }],
-        [{ id: "gjk", highlight: true }],
-        [{ id: "severity" }],
+        [{ id: "processing", note: true }],
+        [{ id: "detection", note: true, highlight: true }],
+        [{ id: "scoring", note: true }],
         [{ id: "viewer", note: true }, { id: "llm", note: true }],
       ]}
       edges={[
         ["signin", "processing"],
-        ["processing", "gjk"],
-        ["gjk", "severity"],
-        ["severity", "viewer"],
-        ["severity", "llm"],
+        ["processing", "detection"],
+        ["detection", "scoring"],
+        ["scoring", "viewer"],
+        ["scoring", "llm"],
       ]}
     />
   );

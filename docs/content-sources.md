@@ -111,14 +111,16 @@ Five case studies, in this order; these rows seed `content/projects.ts` and `doc
 1. **Fibrant.** Multi-model AI analyst (Claude, ChatGPT, Gemini with a model selector), tool use, per-portfolio memory, a cache-friendly static system prompt, credits by tier; time-weighted returns and XIRR with `decimal.js`, USD/MXN conversion; Supabase row-level security with shared portfolios. Visuals: demo-account screenshots, analyst tool-use diagram.
    Role scope (confirmed by Carlos in M3): the database and its access rules, the AI analyst and the interface.
    Stack (confirmed by Carlos in M3, checked against the Fibrant repo's `package.json` and imports): Next.js, React, TypeScript, Supabase, Stripe, Anthropic API, OpenAI API, Gemini API, decimal.js, TanStack Query, Recharts, Tailwind CSS, shadcn/ui, next-intl, Vitest.
-2. **VDC Plugins for Revit.** About 10 C#/.NET 8 add-ins for Revit 2025 and 2026; a shared per-tool licensing gate that blocks unless access is confirmed; tools from another developer brought onto the shared structure and gate, with fixes; Dynamo and Python logic ported to C#; IPC Table 704.1 slope rules with documented tolerance; one Inno Setup installer. Web side: plugin slug registry, Stripe organisation and personal subscriptions, webhook lifecycle by subscription ID, closed access leaks; storefront free-trial flow, installer downloads, Docker/Prisma deploy. Visuals: system diagram (add-in, gate, slug registry, Stripe), storefront screenshot, gate excerpt.
+2. **VDC Plugins for Revit.** About 10 C#/.NET 8 add-ins for Revit 2025 and 2026; every tool checks the user's subscription before it runs; tools from another developer brought onto the shared structure, with fixes; Dynamo and Python logic ported to C#; IPC Table 704.1 slope rules with documented tolerance; one Inno Setup installer. Web side: Stripe organisation and personal subscriptions kept in sync with each user's access; storefront free-trial flow, installer downloads, Docker deploy. Visuals: system diagram (storefront, add-in, licence check, Stripe subscriptions), storefront screenshot.
+   Kept out of copy by Carlos's decision (2026-10-10), because the product is commercial: how the licence check works inside, the plugin slug registry, the webhook lifecycle, and the access leaks that were closed.
    Stack (confirmed by Carlos in M3, checked against the `package.json`/`pyproject.toml` and imports of the toolkit-library subscription app and the vdc-plugins-webpage storefront; the add-in items come from the highlight above): C#, .NET 8, Revit API, Inno Setup, Next.js, TypeScript, Prisma, MySQL, NextAuth, Stripe, Docker, Tailwind CSS, shadcn/ui.
 3. **F1 Forecast Lab.** Python `uv` monorepo with FastF1 ingestion, leakage checks, logistic vs LightGBM vs XGBoost with calibration compared on event- and season-level backtests, the `f1-weekend` operator CLI, Supabase sync, a Next.js predicted-vs-actual dashboard. Real metrics come from `f1_model_runs`, not estimates. Visuals: dashboard screenshots, pipeline diagram.
    Stack (confirmed by Carlos in M3, checked against the `package.json`/`pyproject.toml` and imports of deepspace-labs (pipeline) and DeepSpace (dashboard)): Python, uv, FastF1, pandas, NumPy, scikit-learn, LightGBM, XGBoost, pytest, Supabase, Next.js, TypeScript.
 4. **Expressus Café.** Next.js storefront; checkout totals and stock changes in transactional database functions; guest carts on an HTTP-only cookie; Stripe Checkout with signed webhooks; Skydropx shipping quotes. Visuals: storefront screenshots, checkout-flow diagram.
    Stack (confirmed by Carlos in M3, checked against the `package.json`/`pyproject.toml` and imports of expressus-app): Next.js, React, TypeScript, Supabase, Stripe Checkout, Skydropx, Zod, SWR, Resend, Tailwind CSS, shadcn/ui, Vitest.
-5. **Forge Clash Insight.** GJK collision detection and severity scoring; Autodesk (APS/ACC) and Procore sign-in; model processing and a Three.js viewer; LLM analysis through n8n. Visuals: clash-flow diagram, GJK excerpt.
-   Stack (confirmed by Carlos in M3, checked against the `package.json`/`pyproject.toml` and imports of next-fci): Next.js, TypeScript, Three.js, React Three Fiber, Autodesk (APS/ACC), Procore, Supabase, OpenAI API, n8n, TanStack Query, Tailwind CSS.
+5. **Forge Clash Insight.** Autodesk (APS/ACC) and Procore sign-in and model selection; models from different disciplines aligned automatically by georeference; collision detection with several algorithms working together; a 0–10 clash score with low, medium and high risk levels, weighted by a category-by-category priority matrix the team maintains in an admin page; clashes grouped by area of the building, with an LLM (OpenAI) writing a plain-language summary per area as validated structured output; a Three.js viewer of the scored clashes; existing Autodesk Construction Cloud issues brought into the model with root causes and rooms; a quote-request flow that sends leads into UtahBIM's GoHighLevel CRM pipeline. The app runs in four steps: Select Models, 3D Viewer, Clash Report, Clash Viewer. Visuals: clash-flow diagram.
+   Confirmed by Carlos on 2026-10-10, checked against the next-fci repo. Kept out of copy by his decision: the names of the collision algorithms, the scoring formula and its weights, the risk-band thresholds, and the spatial index. The n8n workflows are no longer wired into the app (their tab is commented out; the analysis calls OpenAI directly), so n8n is out of the stack. The SVF-reading code appears adapted from the open-source `forge-convert-utils`, so copy never claims a hand-written parser. Another developer has commits in the repo, so the role stays "Main developer", never "sole".
+   Stack (confirmed by Carlos in M3, checked against the `package.json`/`pyproject.toml` and imports of next-fci): Next.js, TypeScript, Three.js, React Three Fiber, Autodesk (APS/ACC), Procore, Supabase, OpenAI API, GoHighLevel, TanStack Query, Tailwind CSS. (n8n removed and GoHighLevel added on 2026-10-10.)
 
 UtahBIM's own time-savings claims on vdcplugins.com stay out of the case study unless quoted and attributed to the product site.
 
@@ -167,10 +169,9 @@ in M6; they state nothing beyond the case-study facts above, plus these:
 - **Expressus checkout flow (confirmed):** guest cart → Skydropx shipping quote
   → checkout totals in a transactional database function → Stripe Checkout →
   signed webhook → stock change in a transactional database function.
-- **VDC system (confirmed):** storefront (free trial, installer download) →
-  Revit add-in → shared licensing gate → the tool's slug in the plugin
-  registry, checked against Stripe organisation and personal subscriptions,
-  which webhooks keep current by subscription ID.
+- **VDC system (confirmed, simplified 2026-10-10):** storefront (free trial,
+  installer download) → Revit add-in → licence check → Stripe organisation and
+  personal subscriptions.
 - **Fibrant analyst flow (confirmed):** question → model selector (Claude,
   ChatGPT, Gemini; usage metered in credits by tier) → static, cache-friendly
   system prompt and per-portfolio memory → tool use, which reads the portfolio
@@ -180,15 +181,17 @@ in M6; they state nothing beyond the case-study facts above, plus these:
   `f1-weekend` operator CLI → Supabase sync → Next.js predicted-vs-actual
   dashboard. The forecast pages live under DeepSpace Labs on deepspace.com.mx.
 - **Forge Clash flow (confirmed):** Autodesk (APS/ACC) or Procore sign-in →
-  model processing → GJK collision detection → severity scoring, which feeds
-  both the Three.js viewer and the LLM analysis through n8n.
+  model processing and alignment across disciplines → collision detection
+  (several algorithms; not named) → 0–10 clash scoring from the priority
+  matrix, which feeds both the Three.js viewer and the LLM summary per area.
 - **Fibrant analyst screenshot:** the demo account (Pro tier) answering a
   seeded health-check question; same made-up data as the dashboard.
 - **VDC storefront screenshot:** kept with the site's own stat strip in
   frame, by Carlos's decision (M6).
-- **Code excerpts (approved):** `GatedExternalCommand.Execute` from the
-  VDCPlugins add-in (the fail-closed gate), trimmed; `gjkCollisionDetection`
-  from Forge Clash Insight's `gjk-collision.ts`, unchanged.
+- **Code excerpts:** none for the UtahBIM projects. The `GatedExternalCommand`
+  and `gjkCollisionDetection` excerpts were removed on 2026-10-10 so the case
+  studies don't show how UtahBIM's software works; the code walkthrough stays
+  available on request.
 - **F1 event screenshot:** the 2026 Azerbaijan Grand Prix race page on
   deepspace.com.mx, predicted points chance against points scored. No metric
   is quoted in its caption; the metrics copy may quote are below.

@@ -2,7 +2,7 @@ export const meta = {
   title: "VDC Plugins for Revit",
   summary: "A commercial suite of about 10 Revit add-ins for construction teams, and the licensing and subscription system behind it.",
   hero: {
-    caption: "The add-in suite and its web side: every tool passes the licensing gate.",
+    caption: "The add-in suite and its web side: every tool checks for a subscription before it runs.",
   },
 };
 
@@ -17,42 +17,13 @@ I'm the lead developer of the add-in suite, and I contribute to UtahBIM's subscr
 ## Approach
 
 - **Add-ins.** About 10 tools in C# on .NET 8, for Revit 2025 and 2026, shipped in one Inno Setup installer.
-- **Licensing gate.** Every tool goes through a shared per-tool gate that blocks unless access is confirmed. Tools from another developer were brought onto the same structure and gate, with fixes along the way.
+- **Licensing.** Every tool checks the user's subscription before it runs. Tools from another developer were brought onto the same structure, with fixes along the way.
 - **Ports and rules.** Logic that lived in Dynamo and Python was ported to C#. Slope checks follow IPC Table 704.1, with the tolerance documented.
-- **Web side.** Each plugin has a slug in a registry. Stripe handles organisation and personal subscriptions, and webhooks follow each subscription's lifecycle by its ID, which closed gaps where access had leaked. The storefront has a free-trial flow and installer downloads, and deploys with Docker and Prisma.
+- **Web side.** Organisation and personal subscriptions in Stripe stay in sync with each user's access. The storefront has a free-trial flow and installer downloads, and deploys with Docker.
 
 <Figure number={2} caption="The vdcplugins.com storefront, where the free trial starts.">
   <Screenshot src="/projects/vdc-plugins/storefront" alt="The vdcplugins.com home page, with buttons to browse the plugins and start a free trial." />
 </Figure>
-
-<CodeExcerpt title="GatedExternalCommand.cs" caption="The shared gate every command passes through: anything unexpected blocks the tool.">
-
-```cs
-public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
-{
-    AccessDecision decision;
-    try
-    {
-        decision = TheToolkitGate.Evaluate(AppSlug, commandData.Application.MainWindowHandle);
-    }
-    catch (Exception ex)
-    {
-        // Anything unexpected inside the gate blocks the command (fail closed).
-        decision = AccessDecision.Blocked("The license check failed unexpectedly.\n\n" + ex.Message);
-    }
-
-    if (decision.Outcome != GateOutcome.Allowed)
-    {
-        TheToolkitGate.ExplainDecision(decision, CommandDisplayName);
-        message = decision.ShortSummary(CommandDisplayName);
-        return Result.Cancelled;
-    }
-
-    return ExecuteCommand(commandData, ref message, elements);
-}
-```
-
-</CodeExcerpt>
 
 ## Outcome
 

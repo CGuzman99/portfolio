@@ -1,14 +1,14 @@
 export const meta = {
   title: "Forge Clash Insight",
-  summary: "A 3D clash-detection prototype for UtahBIM: GJK collision checks, severity scoring and LLM analysis, in a Three.js viewer.",
+  summary: "A 3D clash-detection prototype for UtahBIM: it finds clashes between building models, scores how much each one matters and explains them in plain language.",
   hero: {
-    caption: "From sign-in to scored clashes.",
+    caption: "From sign-in to scored, explained clashes.",
   },
 };
 
 ## Problem
 
-Clashes between building systems in a 3D model are costly when they are found late. Forge Clash Insight is a prototype for finding them and judging how much each one matters.
+Clashes between building systems in a 3D model are costly when they are found late, and a long list of them doesn't tell a team which to fix first. Forge Clash Insight is a prototype for finding clashes, ranking them and explaining them.
 
 ## My role
 
@@ -16,63 +16,13 @@ I was the main developer, building it for UtahBIM.
 
 ## Approach
 
-- **Detection.** GJK collision detection finds intersecting elements, and a severity score ranks each clash.
-- **Sign-in.** Users sign in with Autodesk (APS/ACC) or Procore.
-- **Viewer.** Models are processed and shown in a Three.js viewer.
-- **Analysis.** LLM analysis of the clashes runs through n8n.
-
-<CodeExcerpt title="gjk-collision.ts" caption="The GJK main loop: it grows a simplex in the Minkowski difference until it contains the origin or can't.">
-
-```ts
-/**
- * Gilbert-Johnson-Keerthi (GJK) Distance Algorithm
- * Returns true if the two meshes are colliding
- */
-export function gjkCollisionDetection(meshA: THREE.Mesh, meshB: THREE.Mesh, maxIterations = 1000): boolean {
-  // Convert meshes to convex hulls
-  const hullA = meshToConvexHull(meshA);
-  const hullB = meshToConvexHull(meshB);
-
-  // Step 1: Pick an arbitrary starting direction
-  const direction = new THREE.Vector3(1, 0, 0);
-
-  // Step 2: Get first point in Minkowski difference
-  const simplex = new Simplex();
-  const initialPoint = supportMinkowski(hullA, hullB, direction);
-  simplex.push(initialPoint);
-
-  // Step 4: Choose direction towards origin
-  direction.copy(initialPoint).negate();
-
-  // Main loop
-  for (let i = 0; i < maxIterations; i++) {
-    // Step 5: Get a new point in the direction
-    const newPoint = supportMinkowski(hullA, hullB, direction);
-
-    // Step 6: Check if we passed the origin
-    if (newPoint.dot(direction) <= 0) {
-      // Didn't pass the origin, no collision
-      return false;
-    }
-
-    // Step 7: Add new point to simplex
-    simplex.push(newPoint);
-
-    // Step 8 & 9: Process simplex
-    if (processSimplex(simplex, direction)) {
-      // Origin is contained in simplex, collision detected
-      return true;
-    }
-  }
-
-  // Max iterations reached (shouldn't happen normally)
-  console.warn('GJK: Maximum iterations reached: ' + maxIterations);
-  return false;
-}
-```
-
-</CodeExcerpt>
+- **Models in.** Users sign in with Autodesk (APS/ACC) or Procore and pick models from their projects. Models from different disciplines are aligned automatically before they're compared.
+- **Detection.** Several collision-detection algorithms work together to find intersecting elements.
+- **Scoring.** Each clash gets a score from 0 to 10 and a low, medium or high risk level. The score is weighted by which building systems meet, using a priority matrix the team maintains.
+- **Analysis.** Clashes are grouped by area of the building, and an LLM writes a short, plain-language summary of each area's coordination problems, returned as validated structured output.
+- **Review.** A Three.js viewer shows the scored clashes in 3D, and existing Autodesk Construction Cloud issues can be brought into the model with their root causes and rooms.
+- **Quote requests.** A quote-request flow sends leads straight into UtahBIM's CRM.
 
 ## Outcome
 
-A prototype for UtahBIM.
+A prototype for UtahBIM, built around four steps: select models, view them in 3D, read the clash report and review each clash in the viewer.

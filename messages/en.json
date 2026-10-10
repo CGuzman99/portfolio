@@ -232,8 +232,8 @@
       }
     },
     "vdcSystem": {
-      "title": "VDC Plugins: add-in, licensing gate and subscriptions",
-      "description": "The storefront offers a free trial and the installer download. Every Revit add-in runs a shared per-tool licensing gate that blocks unless access is confirmed. The gate checks the tool's slug in the plugin registry against Stripe organisation and personal subscriptions, which webhooks keep current by subscription ID.",
+      "title": "VDC Plugins: add-in, licensing and subscriptions",
+      "description": "The storefront offers a free trial and the installer download. Every Revit add-in checks the user's subscription before it runs, and Stripe manages organisation and personal subscriptions.",
       "storefront": {
         "label": "Storefront",
         "note": "free trial · installer download"
@@ -243,20 +243,12 @@
         "note": "C# · .NET 8 · Revit 2025–2026"
       },
       "gate": {
-        "label": "Licensing gate",
-        "note": "blocks unless access is confirmed"
-      },
-      "registry": {
-        "label": "Plugin slug registry",
-        "note": "one slug per tool"
+        "label": "Licensing",
+        "note": "checks access"
       },
       "subscriptions": {
-        "label": "Stripe subscriptions",
-        "note": "organisation and personal"
-      },
-      "webhooks": {
-        "label": "Stripe webhooks",
-        "note": "lifecycle by subscription ID"
+        "label": "Subscriptions",
+        "note": "Stripe · organisation and personal"
       }
     },
     "f1Pipeline": {
@@ -317,19 +309,22 @@
     },
     "forgeClashFlow": {
       "title": "Forge Clash Insight flow",
-      "description": "The user signs in with Autodesk (APS/ACC) or Procore. Models are processed, GJK collision detection finds the clashes, and each one gets a severity score. The results go to a Three.js viewer and to LLM analysis through n8n.",
+      "description": "The user signs in with Autodesk (APS/ACC) or Procore. Models from different disciplines are processed and aligned, and several collision-detection algorithms find the clashes. Each clash gets a 0–10 score, weighted by a priority matrix of building systems. The results go to a Three.js viewer and to an LLM that summarises each area of the building.",
       "signin": {
         "label": "Sign-in",
         "note": "Autodesk APS/ACC · Procore"
       },
       "processing": {
-        "label": "Model processing"
+        "label": "Model processing",
+        "note": "aligned across disciplines"
       },
-      "gjk": {
-        "label": "GJK collision detection"
+      "detection": {
+        "label": "Collision detection",
+        "note": "several algorithms"
       },
-      "severity": {
-        "label": "Severity scoring"
+      "scoring": {
+        "label": "Clash scoring",
+        "note": "0–10 · priority matrix"
       },
       "viewer": {
         "label": "3D viewer",
@@ -337,7 +332,7 @@
       },
       "llm": {
         "label": "LLM analysis",
-        "note": "n8n"
+        "note": "summary per area"
       }
     }
   }

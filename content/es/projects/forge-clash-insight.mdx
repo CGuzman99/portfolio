@@ -1,14 +1,14 @@
 export const meta = {
   title: "Forge Clash Insight",
-  summary: "Un prototipo de detección de interferencias en 3D para UtahBIM: colisiones con GJK, puntaje de severidad y análisis con LLM, en un visor de Three.js.",
+  summary: "Un prototipo de detección de interferencias en 3D para UtahBIM: encuentra las interferencias entre modelos de un edificio, califica qué tanto importa cada una y las explica en lenguaje claro.",
   hero: {
-    caption: "Del inicio de sesión a las interferencias con puntaje.",
+    caption: "Del inicio de sesión a las interferencias calificadas y explicadas.",
   },
 };
 
 ## Problema
 
-Las interferencias entre sistemas de un edificio en un modelo 3D salen caras cuando se detectan tarde. Forge Clash Insight es un prototipo para encontrarlas y evaluar qué tanto importa cada una.
+Las interferencias entre sistemas de un edificio en un modelo 3D salen caras cuando se detectan tarde, y una lista larga no le dice al equipo cuáles resolver primero. Forge Clash Insight es un prototipo para encontrarlas, priorizarlas y explicarlas.
 
 ## Mi rol
 
@@ -16,63 +16,13 @@ Fui el desarrollador principal y lo construí para UtahBIM.
 
 ## Enfoque
 
-- **Detección.** La detección de colisiones con GJK encuentra los elementos que se cruzan, y un puntaje de severidad ordena cada interferencia.
-- **Inicio de sesión.** Los usuarios entran con Autodesk (APS/ACC) o Procore.
-- **Visor.** Los modelos se procesan y se muestran en un visor de Three.js.
-- **Análisis.** El análisis de las interferencias con LLM corre a través de n8n.
-
-<CodeExcerpt title="gjk-collision.ts" caption="El ciclo principal de GJK: construye un símplex en la diferencia de Minkowski hasta que contiene el origen o ya no puede.">
-
-```ts
-/**
- * Gilbert-Johnson-Keerthi (GJK) Distance Algorithm
- * Returns true if the two meshes are colliding
- */
-export function gjkCollisionDetection(meshA: THREE.Mesh, meshB: THREE.Mesh, maxIterations = 1000): boolean {
-  // Convert meshes to convex hulls
-  const hullA = meshToConvexHull(meshA);
-  const hullB = meshToConvexHull(meshB);
-
-  // Step 1: Pick an arbitrary starting direction
-  const direction = new THREE.Vector3(1, 0, 0);
-
-  // Step 2: Get first point in Minkowski difference
-  const simplex = new Simplex();
-  const initialPoint = supportMinkowski(hullA, hullB, direction);
-  simplex.push(initialPoint);
-
-  // Step 4: Choose direction towards origin
-  direction.copy(initialPoint).negate();
-
-  // Main loop
-  for (let i = 0; i < maxIterations; i++) {
-    // Step 5: Get a new point in the direction
-    const newPoint = supportMinkowski(hullA, hullB, direction);
-
-    // Step 6: Check if we passed the origin
-    if (newPoint.dot(direction) <= 0) {
-      // Didn't pass the origin, no collision
-      return false;
-    }
-
-    // Step 7: Add new point to simplex
-    simplex.push(newPoint);
-
-    // Step 8 & 9: Process simplex
-    if (processSimplex(simplex, direction)) {
-      // Origin is contained in simplex, collision detected
-      return true;
-    }
-  }
-
-  // Max iterations reached (shouldn't happen normally)
-  console.warn('GJK: Maximum iterations reached: ' + maxIterations);
-  return false;
-}
-```
-
-</CodeExcerpt>
+- **Modelos.** Los usuarios entran con Autodesk (APS/ACC) o Procore y eligen modelos de sus proyectos. Los modelos de distintas disciplinas se alinean automáticamente antes de compararse.
+- **Detección.** Varios algoritmos de detección de colisiones trabajan en conjunto para encontrar los elementos que se cruzan.
+- **Puntaje.** Cada interferencia recibe un puntaje de 0 a 10 y un nivel de riesgo bajo, medio o alto. El puntaje se pondera según qué sistemas del edificio se cruzan, con una matriz de prioridades que mantiene el equipo.
+- **Análisis.** Las interferencias se agrupan por zona del edificio, y un LLM redacta un resumen breve y claro de los problemas de coordinación de cada zona, con una salida estructurada y validada.
+- **Revisión.** Un visor de Three.js muestra en 3D las interferencias con su puntaje, y las incidencias que ya existen en Autodesk Construction Cloud se pueden traer al modelo con su causa raíz y la habitación donde están.
+- **Cotizaciones.** Un flujo de solicitud de cotización manda a los prospectos directo al CRM de UtahBIM.
 
 ## Resultado
 
-Un prototipo para UtahBIM.
+Un prototipo para UtahBIM, organizado en cuatro pasos: elegir los modelos, verlos en 3D, leer el reporte de interferencias y revisar cada una en el visor.
