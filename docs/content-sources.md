@@ -60,7 +60,7 @@ Six routes, each at one URL in both languages; the header carries the EN / ES to
 ## Profile links and contact (confirmed by Carlos, M4)
 
 - **GitHub:** https://github.com/CGuzman99
-- **LinkedIn:** https://www.linkedin.com/in/carlos-antonio-guzm%C3%A1n-jim%C3%A9nez-8b7328225
+- **LinkedIn:** https://www.linkedin.com/in/carlos-guzman-8b7328225
 - **Upwork:** https://www.upwork.com/freelancers/~01b3da283ab722a8c8
 - **Email:** carlos@cguzman.dev — on the CV page and its PDFs only, not
   on the other site pages. (Replaced carlosantoniogj@gmail.com; confirmed by

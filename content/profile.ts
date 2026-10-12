@@ -46,7 +46,7 @@ export const profile = ProfileSchema.parse({
   links: {
     github: "https://github.com/CGuzman99",
     linkedin:
-      "https://www.linkedin.com/in/carlos-antonio-guzm%C3%A1n-jim%C3%A9nez-8b7328225",
+      "https://www.linkedin.com/in/carlos-guzman-8b7328225",
     upwork: "https://www.upwork.com/freelancers/~01b3da283ab722a8c8",
   },
   email: "carlos@cguzman.dev",

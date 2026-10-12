@@ -47,7 +47,7 @@ test("the profile links point at Carlos's profiles", async ({
   );
   await expect(profiles.getByRole("link", { name: "LinkedIn" })).toHaveAttribute(
     "href",
-    "https://www.linkedin.com/in/carlos-antonio-guzm%C3%A1n-jim%C3%A9nez-8b7328225",
+    "https://www.linkedin.com/in/carlos-guzman-8b7328225",
   );
   await expect(profiles.getByRole("link", { name: "Upwork" })).toHaveAttribute(
     "href",
